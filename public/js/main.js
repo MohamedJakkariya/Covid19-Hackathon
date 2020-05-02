@@ -27,8 +27,8 @@ const init = () => {
             const current = link(sections[i].id);
 
             if(window.scrollY > 200 && window.innerWidth > 800){                
-                // document.getElementById('header').style.backgroundColor = "#041B15";
-                document.getElementById('header').style.backgroundColor = "#fc4036";
+                document.getElementById('header').style.backgroundColor = "#000000";
+                // document.getElementById('header').style.backgroundColor = "#fc4036";
                 document.getElementById('header').style.transition = "0.3s"
             }else{
                 document.getElementById('header').style.backgroundColor = "unset";
