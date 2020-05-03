@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "covid19-api": "^1.2.1",
+    "ejs": "^3.1.2",
     "express": "^4.17.1"
   },
   "nodemonConfig": {

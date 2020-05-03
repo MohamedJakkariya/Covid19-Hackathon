@@ -5,8 +5,11 @@ const app = express();
 
 app.use(express.static(__dirname + '/public'));
 
+// View engine setup
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/html/index.html')
+  res.render('index');
 });  
 
 app.listen(4000, () => {
