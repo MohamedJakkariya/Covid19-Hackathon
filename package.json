@@ -7,5 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "covid19-api": "^1.2.1",
+    "express": "^4.17.1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public/*",
+      "*.json",
+      "utils/*",
+      "db/*"
+    ]
+  }
 }
