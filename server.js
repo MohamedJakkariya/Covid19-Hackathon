@@ -14,6 +14,9 @@ app.get('/', (req, res) => {
   res.render('index');
 });  
 
-app.listen(PORT || process.env.PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+const PORT = process.env.PORT || 4000;
+
+// Port start
+app.listen(PORT, () => {
+  console.log(`Server running on port #${PORT}`);
 });
