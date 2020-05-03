@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Bootstrap -->
-    <!-- <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
 
     <!-- Font Awesome  -->
     <!-- <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css"> -->
@@ -60,37 +60,49 @@
     </div>
 
     <section id="statistics">
-      <!-- <img src="../img/covid19.jpg" alt="" /> -->
       <div class="analysis">
+        <div class="box">
+          <select class="form-control" onchange="getCountryReport()" id="country">
+            <option value="Global">World</option>
+            <option value="India">India</option>
+            <option value="China">China</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Italy">Italy</option>
+            <option value="Australia">Australia</option>
+            <option value="America">Russia</option>
+          </select>
+        </div>
+       
         <div class="box">
           <img src="../img/icon.png" alt="" />
           <div class="value">
-            <h3>29182</h3>
+            <h3 id="confirmed">0</h3>
+            <p>Total Case</p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="../img/icon.png" alt="" />
+          <div class="value">
+            <h3 id="active">0</h3>
             <p>Active Cases</p>
           </div>
         </div>
         <div class="box">
           <img src="../img/icon.png" alt="" />
           <div class="value">
-            <h3>29182</h3>
-            <p>Discharged/Cure</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3>2292</h3>
+            <h3 id="deaths">0</h3>
             <p>Deaths</p>
           </div>
         </div>
         <div class="box">
           <img src="../img/icon.png" alt="" />
           <div class="value">
-            <h3>29182</h3>
-            <p>Migrated</p>
+            <h3 id="recovered">0</h3>
+            <p>Recovered</p>
           </div>
-        </div>
+        </div>        
       </div>
+      <img src="../img/covid19.jpg" alt="" />
     </section>
 
     <div class="title">
@@ -180,7 +192,8 @@
     </footer>
 
     <script src="../lib/jquery/jquery.min.js"></script>
-    <!-- <script src="../lib/bootstrap/js/bootstrap.min.js"></script> -->
+    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../lib/animated-counter/animationCounter.min.js"></script>
     <script src="../js/main.js"></script>
   </body>
 </html>

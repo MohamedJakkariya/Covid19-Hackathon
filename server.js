@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.sendFile(__dirname + '/public/html/index.html');
 });  
 
 const PORT = process.env.PORT || 4000;
