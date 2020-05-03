@@ -92,11 +92,93 @@ function getCountryReport() {
     .catch((err) => console.log(err));
 }
 
-function initData() {
-    setTimeout(() => {
-        getCountryReport()
-    }, 0)
+
+// Get init report 
+// getCountryReport();
+
+
+// Generate Chart 
+var ctx = document.getElementById('chart').getContext('2d');
+
+// Store all states 
+let state = [],
+    active = [],
+    recovered = [],
+    deaths = [],
+    confirmed = [];
+
+function showGraph(choice){
+
+    new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line', //bar, radar, pie, doughnut
+    
+        // The data for our dataset
+        data: {
+            labels: state,
+            datasets: [{
+                label: `${choice}`,
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: getData(choice)
+            }]
+        },
+    
+        // Configuration options go here
+        options: {
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 50,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            easing : 'easeInBounce',
+            duration: 100,
+            scales: {
+                xAxes: [{
+                    barPercentage: 0.4
+                }]
+            }
+        }
+    });
 }
 
-// Get the global report 
-initData();
+
+// Initialy load a graph 
+function initGraph(){
+    fetch(`${URL}/IndiaCasesByStates`)
+    .then((res) => res.json())
+    .then((data) => {
+        for(let i = 1; i < data.data[0].table.length; i++){
+            console.log(data.data[0].table[i].active);
+            
+            state.push(data.data[0].table[i].state);
+            active.push(data.data[0].table[i].active);
+            recovered.push(data.data[0].table[i].recovered);
+            confirmed.push(data.data[0].table[i].confirmed);
+            deaths.push(data.data[0].table[i].deaths);
+        }
+
+        // Init Graph show 
+        showGraph('active');
+    })
+    .catch((err) => console.log(err));
+}
+
+// Initialize the graph 
+initGraph()
+
+const getData = (choice) => {
+    switch(choice){
+        case 'recovered':
+            return recovered;
+        case 'confirmed':
+            return confirmed;
+        case 'deaths':
+            return deaths;
+        default:
+            return active;
+    }
+}
