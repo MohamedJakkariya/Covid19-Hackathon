@@ -17,7 +17,7 @@
   <body>
     <div id="showcase">
       <!-- Close button  -->
-      <a href="#" type="button" class="closeBtn" onclick="closeNav()">&times;</a>
+      <a  role="button" class="closeBtn" onclick="closeNav()">&times;</a>
 
       <div id="header" class="sideNav">
         <a href="#" class="brand">
@@ -38,7 +38,7 @@
       </div>
 
       <!-- Opan Nav  -->
-      <a type="button" href="#" class="openBtn">
+      <a role="button" class="openBtn">
         <span onclick="openNav()">&#9776;</span>
       </a>
     </div>
@@ -52,6 +52,44 @@
             >-Napoleon Hill</span
           >
         </p>
+      </div>
+    </section>
+
+    <div class="title">
+      <h1><span class="highlight">Covid19</span> Status</h1>
+    </div>
+
+    <section id="statistics">
+      <!-- <img src="../img/covid19.jpg" alt="" /> -->
+      <div class="analysis">
+        <div class="box">
+          <img src="../img/icon.png" alt="" />
+          <div class="value">
+            <h3>29182</h3>
+            <p>Active Cases</p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="../img/icon.png" alt="" />
+          <div class="value">
+            <h3>29182</h3>
+            <p>Discharged/Cure</p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="../img/icon.png" alt="" />
+          <div class="value">
+            <h3>2292</h3>
+            <p>Deaths</p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="../img/icon.png" alt="" />
+          <div class="value">
+            <h3>29182</h3>
+            <p>Migrated</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -89,45 +127,6 @@
         </p>
       </div>
       <img src="../img/showcase-1.jpg" alt="" />
-    </section>
-
-    <div class="title">
-      <h1><span class="highlight">Covid19</span> Status</h1>
-    </div>
-
-    <section id="statistics">
-      <img src="../img/covid19.jpg" alt="" />
-
-      <div class="analysis">
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3>29182</h3>
-            <p>Active Cases</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3>29182</h3>
-            <p>Discharged/Cure</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3>2292</h3>
-            <p>Deaths</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3>29182</h3>
-            <p>Migrated</p>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section id="prevention"></section>
@@ -180,7 +179,7 @@
       </div>
     </footer>
 
-    <!-- <script src="../lib/jquery/jquery.min.js"></script> -->
+    <script src="../lib/jquery/jquery.min.js"></script>
     <!-- <script src="../lib/bootstrap/js/bootstrap.min.js"></script> -->
     <script src="../js/main.js"></script>
   </body>
