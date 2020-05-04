@@ -129,7 +129,7 @@ function showGraph(choice){
             layout: {
                 padding: {
                     left: 0,
-                    right: 50,
+                    right: 10,
                     top: 0,
                     bottom: 0
                 }
@@ -168,7 +168,7 @@ function initGraph(){
 }
 
 // Initialize the graph 
-initGraph()
+// initGraph()
 
 const getData = (choice) => {
     switch(choice){
@@ -182,3 +182,12 @@ const getData = (choice) => {
             return active;
     }
 }
+
+$(document).ready(() => {
+    $('#toggle-apply').click(() => {
+        $('#apply').fadeToggle('slow');
+    });
+    $('#toggle-location').click(() => {
+        $('#location').fadeToggle('slow');
+    });
+});

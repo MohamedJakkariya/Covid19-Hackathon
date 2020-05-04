@@ -1,0 +1,170 @@
+ <%- include('header') %>
+  <body>
+      
+    <%- include('navbar') %>
+
+    <div id="user-dashboard">
+          <div class="side-panel">
+            <div class="profile">
+                <a href="#" class="fa fa-sign-out logout"></a>
+                <img src="../img/profile.jpg" alt="">
+                <a href="#" class="fa fa-edit edit"></a>
+            </div>
+
+            <div class="dropdown">
+                <button type="button" id="toggle-apply" class="btn btn-primary" data-toggle="dropdown">
+                  Apply
+                  <span class="fa fa-caret-down"></span>
+                </button>
+                <div id="apply">
+                  <a class="dropdown-item" href="/user/sympotoms">Inform for Sympotoms</a>
+                  <a class="dropdown-item" href="/user/food">Food Help</a>
+                  <a class="dropdown-item" href="#">Transport Pass</a>
+                  <a class="dropdown-item" href="#">Personal Pass</a>
+                  <a class="dropdown-item" href="#">Hospital Admission</a>
+                  <a class="dropdown-item" href="#">Doctor Appointment</a>
+                  <a class="dropdown-item" href="#">Lab Result</a>
+                  <a class="dropdown-item" href="#">Volunteer</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button type="button" id="toggle-location" class="btn btn-primary" data-toggle="dropdown">
+                  Locations
+                  <span class="fa fa-caret-down"></span>
+                </button>
+                <div id="location">
+                  <a class="dropdown-item" href="#">Near Hospitals</a>
+                  <a class="dropdown-item" href="#">Near Pharmacy</a>
+                  <a class="dropdown-item" href="#">Near Shelter</a>
+                </div>
+            </div>
+
+            <button class="btn btn-primary">Toll-Free No</button>
+            <button class="btn btn-primary">Give Fund</button>
+            <button class="btn btn-primary">Covid Products</button>
+          </div>
+
+          <!-- Main panel  -->
+          <div class="main-panel">
+            <section id="statistics">
+                <div class="analysis">
+                  <div class="box">
+                    <select class="form-control" onchange="getCountryReport()" id="country">
+                      <option value="Global">World</option>
+                      <option value="India">India</option>
+                      <option value="China">China</option>
+                      <option value="Pakistan">Pakistan</option>
+                      <option value="Italy">Italy</option>
+                      <option value="Australia">Australia</option>
+                      <option value="America">Russia</option>
+                    </select>
+                  </div>
+                  <div class="box">
+                    <img src="../img/icon.png" alt="" />
+                    <div class="value">
+                      <h3 id="confirmed">0</h3>
+                      <p>Total Case</p>
+                    </div>
+                  </div>
+                  <div class="box">
+                    <img src="../img/icon.png" alt="" />
+                    <div class="value">
+                      <h3 id="active">0</h3>
+                      <p>Active Cases</p>
+                    </div>
+                  </div>
+                  <div class="box">
+                    <img src="../img/icon.png" alt="" />
+                    <div class="value">
+                      <h3 id="deaths">0</h3>
+                      <p>Deaths</p>
+                    </div>
+                  </div>
+                  <div class="box">
+                    <img src="../img/icon.png" alt="" />
+                    <div class="value">
+                      <h3 id="recovered">0</h3>
+                      <p>Recovered</p>
+                    </div>
+                  </div>        
+                </div>
+          
+                <div class="chart">
+                    <div class="option">
+                      <div class="radio-group">
+                        <input type="radio" checked id="a-select" class="checkmark" onclick="showGraph('active')" name="option">
+                        <label for="a-select">
+                          <div class="check"></div>
+                          Active
+                        </label>
+                      </div>
+          
+                    <div class="radio-group">
+                      <input type="radio" id="c-select" class="checkmark" onclick="showGraph('confirmed')" name="option">            
+                      <label for="c-select">
+                        <div class="check"></div>
+                        Confirmed
+                      </label>
+                      </div>
+          
+                      <div class="radio-group">
+                        <input type="radio" id="d-select" class="checkmark" onclick="showGraph('deaths')" name="option">        
+                        <label for="d-select">
+                          <div class="check"></div>
+                          Deaths
+                        </label>
+                      </div>
+                      <div class="radio-group">
+                        <input type="radio" id="r-select" class="checkmark" onclick="showGraph('recovered')" name="option">        
+                        <label for="r-select">
+                          <div class="check"></div>
+                          Recovered
+                        </label>
+                      </div>
+                  </div>
+                  <canvas id="chart"></canvas>
+                </div>
+              </section>
+
+              <section id="articals">
+                  <h1>Articles</h1>
+                <div class="card-group">
+                    <div class="card m-2">
+                      <img class="card-img-top" src="../img/profile2.jpg" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      </div>
+                      <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                      </div>
+                    </div>
+
+                    <div class="card m-2">
+                      <img class="card-img-top" src="../img/profile3.jpg" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                      </div>
+                      <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                      </div>
+                    </div>
+
+                    <div class="card m-2">
+                      <img class="card-img-top" src="../img/covid19.jpg" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                      </div>
+                      <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                      </div>
+                    </div>
+                  </div>
+              </section>
+          </div>
+    </div>
+
+<%- include('footer') %>

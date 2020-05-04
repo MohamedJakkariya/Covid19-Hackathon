@@ -1,0 +1,130 @@
+<%- include('header') %>
+
+  <body class="waitMe_body">
+    <!-- Loading animation  -->
+    <div class="waitMe_container img" style="background:#fff">
+      <div style="background:url('../lib/loading-plugin/img.svg')"></div>
+    </div>
+    
+    <%- include('navbar') %>
+    
+    <!-- form container  -->
+    <form action="/users/<%= action %>" method="POST" class="container">
+      <!-- w container  -->
+      
+      <div id="w">
+        <div id="page">
+            <%- include ('partials/messages') %>
+  
+            <!-- Applicant Details  -->
+            <div id="content-register">
+              <h2><%= For %></h2>
+              <div class="content">
+  
+                <!-- Full name  -->
+                <div class="form-group row pt-4">
+                  <label class="col-md-5" for="fname">Full Name</label>
+                  <input
+                    type="text"
+                    name="fullname"
+                    id="fname"
+                    class="form-control col-md-7"
+                    autocomplete="on"
+                  />
+                </div>
+  
+                <!-- Gender -->
+                <div class="form-group row">
+                  <label class="col-md-4 pt-3">Gender</label>
+                  <div class="p-3 col-md-8">
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input name="gender" id="gender_0" type="radio" class="custom-control-input" value="M" 
+                        checked="checked">
+                      <label for="gender_0" class="custom-control-label">Male</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input name="gender" id="gender_1" type="radio" class="custom-control-input" value="F" >
+                      <label for="gender_1" class="custom-control-label">Female</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input name="gender" id="gender_2" type="radio" class="custom-control-input" value="TG" >
+                      <label for="gender_2" class="custom-control-label">Transgender</label>
+                    </div>
+                  </div>
+                </div>
+  
+                <!-- Mobile number  -->
+                <div class="form-group row">
+                  <label for="mobile" class="col-md-5">Mobile</label>
+                  <div class="col-sm-7 col-md-2 ">
+                    <input name="prefix" type="tel" minlength="10" maxlength="10" class="form-control" placeholder="+91">
+                  </div>
+                  
+                  <div class="col-sm-7 col-md-5 pr-2">
+                    <input id="mobile" name="mobile" type="tel" minlength="10" maxlength="10" class="form-control">
+                  </div>
+                </div>
+  
+                <!-- Dob  -->
+                <div class="form-group row">
+                  <label for="dob" class="col-md-5">Date of Birth</label>
+                  <div class="col-md-7">
+                    <input id="dob" name="dob" type="date"  class="form-control">
+                  </div>
+                </div>
+  
+                <!-- Age  -->
+                <div class="form-group row">
+                  <label for="age" class="col-md-5">Age</label>
+                  <div class="col-md-7">
+                    <input id="age" name="age" type="number" min="10" max="30"  class="form-control">
+                  </div>
+                </div>
+  
+                <!-- Nationality  -->
+                <div class="form-group row">
+                  <label for="nationality" class="col-md-5">Nationality</label>
+                  <div class="col-md-7">
+                    <select id="nationality" name="nationality"  class="custom-select">
+                      <option value="IND">Indian</option>
+                      <option value="CAN">Canadian</option>
+                      <option value="AME">American</option>
+                      <option value="AUS">Australian</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- State  -->
+                <div class="form-group row">
+                  <label for="state" class="col-md-5">State</label>
+                  <div class="col-md-7">
+                    <select id="state" onchange='selct_district(this.value)' name="state" 
+                      class="custom-select">
+                    </select>
+                    </select>
+                  </div>
+                </div>
+  
+                <!-- District  -->
+                <div class="form-group row">
+                  <label for="comdist" class="col-md-5">District</label>
+                  <div class="col-md-7">
+                    <select id="comdist" name="district"  class="custom-select">
+                      <option value="slt-dis" selected disabled>Select a State first</option>
+                    </select>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <!-- /end #applicant-details -->
+          </div>
+        <!-- /end #page -->
+      <!-- /end #w -->
+    </form>
+
+<%- include('footer') %>
+<script src='../js/state.js'></script>
+<script src='../js/state1.js'></script>
