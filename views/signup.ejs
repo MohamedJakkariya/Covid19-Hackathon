@@ -1,0 +1,268 @@
+<%- include('header') %>
+
+  <body class="waitMe_body">
+    <!-- Loading animation  -->
+    <div class="waitMe_container img" style="background:#fff">
+      <div style="background:url('../lib/loading-plugin/img.svg')"></div>
+    </div>
+    
+    <%- include('navbar') %>
+    
+    <!-- form container  -->
+    <form action="/student/signup" method="POST" class="container" enctype="multipart/form-data">
+      <!-- w container  -->
+      
+      <div id="w">
+        <div id="page">
+          <!-- Login Details -->
+          <div id="content-login">
+            <h2>Login Detail</h2>
+            
+            <%- include ('partials/messages') %>
+
+              <div class="content">
+                <div class="form-group row">
+                  <label for="email" class="col-md-5">Email Address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="loginemail"
+                    class="form-control col-md-7"
+                    autocomplete="on"
+                    required
+                  />
+                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">
+                    <p>Please fill out this field.</p>
+                  </div>
+                </div>
+  
+                <div class="form-group row">
+                  <label class="col-md-5" for="password">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control col-md-7 "
+                    autocomplete="on"
+                  />
+                </div>
+  
+                <div class="form-group row">
+                  <label class="col-md-5" for="password2">Confirm Password</label>
+                  <input
+                    type="password"
+                    name="password2"
+                    class="form-control col-md-7"
+                    autocomplete="on"
+                  />
+                </div>
+              </div>
+            </div>
+            <!-- /end #login-details -->
+  
+            <!-- Applicant Details  -->
+            <div id="content-register">
+              <h2>Personal Details</h2>
+              <div class="content">
+  
+                <!-- Full name  -->
+                <div class="form-group row pt-4">
+                  <label class="col-md-5" for="fname">Full Name</label>
+                  <input
+                    type="text"
+                    name="fullname"
+                    id="fname"
+                    class="form-control col-md-7"
+                    autocomplete="on"
+                  />
+                </div>
+  
+                <!-- Father's name  -->
+                <!-- <div class="form-group row">
+                  <label class="col-md-5" for="fname">Father's Name</label>
+                  <input
+                    type="text"
+                    name="fathername"
+                    class="form-control col-md-7"
+                    autocomplete="on"
+                  />
+                </div> -->
+  
+                <!-- Mother name  -->
+                <!-- <div class="form-group row">
+                  <label class="col-md-5" for="fname">Mother's Name</label>
+                  <input
+                    type="text"
+                    name="mothername"
+                    class="form-control col-md-7"
+                    autocomplete="on"
+                  />
+                </div> -->
+  
+                <!-- Gender -->
+                <div class="form-group row">
+                  <label class="col-md-4 pt-3">Gender</label>
+                  <div class="p-3 col-md-8">
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input name="gender" id="gender_0" type="radio" class="custom-control-input" value="M" 
+                        checked="checked">
+                      <label for="gender_0" class="custom-control-label">Male</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input name="gender" id="gender_1" type="radio" class="custom-control-input" value="F" >
+                      <label for="gender_1" class="custom-control-label">Female</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input name="gender" id="gender_2" type="radio" class="custom-control-input" value="TG" >
+                      <label for="gender_2" class="custom-control-label">Transgender</label>
+                    </div>
+                  </div>
+                </div>
+  
+                <!-- Mobile number  -->
+                <div class="form-group row">
+                  <label for="mobile" class="col-md-5">Mobile</label>
+                  <div class="col-sm-7 col-md-2 ">
+                    <input name="prefix" type="tel" minlength="10" maxlength="10" class="form-control" placeholder="+91">
+                  </div>
+                  
+                  <div class="col-sm-7 col-md-5 pr-2">
+                    <input id="mobile" name="mobile" type="tel" minlength="10" maxlength="10" class="form-control">
+                  </div>
+                </div>
+  
+                <!-- Photo  -->
+                <div class="pt-2 form-group row">
+                  <label for="avatar" class="col-md-4">Standard photograph *</label>
+                  <label class="col-md-1"></label>
+                  <div class="col-md-7">
+                    <input id="avatar" name="profile_img" type="file"  aria-describedby="avatarHelpBlock"
+                      class="form-control">
+                    <span id="avatarHelpBlock" class="form-text text-muted">The size of the file should be between 2 kB and 100 kB.
+                      <br> Allowed format: JPEG/png only.</span>
+                  </div>
+                </div>
+  
+                <!-- Dob  -->
+                <div class="form-group row">
+                  <label for="dob" class="col-md-5">Date of Birth</label>
+                  <div class="col-md-7">
+                    <input id="dob" name="dob" type="date"  class="form-control">
+                  </div>
+                </div>
+  
+                <!-- Age  -->
+                <div class="form-group row">
+                  <label for="age" class="col-md-5">Age</label>
+                  <div class="col-md-7">
+                    <input id="age" name="age" type="number" min="10" max="30"  class="form-control">
+                  </div>
+                </div>
+  
+                <!-- Nationality  -->
+                <div class="form-group row">
+                  <label for="nationality" class="col-md-5">Nationality</label>
+                  <div class="col-md-7">
+                    <select id="nationality" name="nationality"  class="custom-select">
+                      <option value="IND">Indian</option>
+                      <option value="CAN">Canadian</option>
+                      <option value="AME">American</option>
+                      <option value="AUS">Australian</option>
+                    </select>
+                  </div>
+                </div>
+
+                  <!-- Degree  -->
+                  <!-- <div class="form-group row">
+                    <label for="clg" class="col-md-5">Enter your degree</label>
+                    <div class="col-md-7">
+                      <input id="clg" name="degree"
+                        type="text"
+                        aria-describedby="clgHelpBlock" class="form-control">
+                    </div>
+                  </div> -->
+  
+                <!-- Institution  -->
+                <!-- <div class="form-group row">
+                  <label for="clg" class="col-md-5">Name of Institution</label>
+                  <div class="col-md-7">
+                    <input id="clg" name="college"
+                      placeholder="University College of Engineering, BIT Campus, Anna University, Tiruchirappalli" type="text"
+                      aria-describedby="clgHelpBlock" class="form-control">
+                    <span id="clgHelpBlock" class="form-text text-muted">Enter the full name of your School/ College</span>
+                  </div>
+                </div> -->
+  
+                <!-- Stream  -->
+                <!-- <div class="form-group row">
+                  <label for="stream" class="col-md-5">Stream</label>
+                  <div class="col-md-7">
+                    <select id="stream" name="stream" class="custom-select">
+                      <option value="commerce">Commerce</option>
+                      <option value="arts">Arts</option>
+                      <option value="business">Business</option>
+                      <option value="engg">Engineering</option>
+                    </select>
+                  </div>
+                </div> -->
+
+                <!-- yearOfJoin  -->
+                 <!-- <div class="form-group row pt-4">
+                  <label class="col-md-5" for="fname">Year Of Join</label>
+                  <input
+                    type="number"
+                    name="yearOfJoin"
+                    class="form-control col-md-7"
+                    autocomplete="on"
+                  />
+                </div> -->
+
+                <!-- State  -->
+                <div class="form-group row">
+                  <label for="state" class="col-md-5">State</label>
+                  <div class="col-md-7">
+                    <select id="state" onchange='selct_district(this.value)' name="state" 
+                      class="custom-select">
+                    </select>
+                    </select>
+                  </div>
+                </div>
+  
+                <!-- District  -->
+                <div class="form-group row">
+                  <label for="comdist" class="col-md-5">District</label>
+                  <div class="col-md-7">
+                    <select id="comdist" name="district"  class="custom-select">
+                      <option value="slt-dis" selected disabled>Select a State first</option>
+                    </select>
+                  </div>
+                </div>
+  
+                <!-- Last edu qualification  -->
+                <!-- <div class="form-group row pb-4">
+                  <label for="educ" class="col-md-5">Last educational qualification *</label>
+                  <div class="col-md-7">
+                    <select id="educ" name="education"  class="custom-select">
+                      <option value="SSLC">SSLC</option>
+                      <option value="Diploma">Diploma</option>
+                      <option value="HSC">HSC</option>
+                      <option value="B.A">B.A</option>
+                      <option value="B.Sc">B.Sc</option>
+                      <option value="B.E">B.E</option>
+                    </select>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <!-- /end #applicant-details -->
+          </div>
+        <!-- /end #page -->
+      <!-- /end #w -->
+    </form>
+
+<%- include('footer') %>
+<script src='../js/state.js'></script>
+<script src='../js/state1.js'></script>
+<!-- <script src='../js/responsiver.js'></script> -->

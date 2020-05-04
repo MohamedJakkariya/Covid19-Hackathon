@@ -1,51 +1,51 @@
 let activeEnd, confirmedEnd, recoveredEnd, deathsEnd;
 
 // Scrolling with navbar effect
-const sections = [...document.querySelectorAll('section')];
-const link = (id) => document.querySelector(`a[href="#${id}"]`);
+// const sections = [...document.querySelectorAll('section')];
+// const link = (id) => document.querySelector(`a[href="#${id}"]`);
 
-const inView = (element) => {
-  var top = element.offsetTop;
-  var height = element.offsetHeight;
+// const inView = (element) => {
+//   var top = element.offsetTop;
+//   var height = element.offsetHeight;
 
-  while (element.offsetParent) {
-    element = element.offsetParent;
-    top += element.offsetTop;
-  }
+//   while (element.offsetParent) {
+//     element = element.offsetParent;
+//     top += element.offsetTop;
+//   }
 
-  return (
-    top < window.pageYOffset + window.innerHeight &&
-    top + height > window.pageYOffset
-  );
-};
+//   return (
+//     top < window.pageYOffset + window.innerHeight &&
+//     top + height > window.pageYOffset
+//   );
+// };
 
-const init = () => {
-  function update() {
-    let next = false;
+// const init = () => {
+//   function update() {
+//     let next = false;
 
-    for (let i = 0; i < sections.length; i++) {
-      const current = link(sections[i].id);
+//     for (let i = 0; i < sections.length; i++) {
+//       const current = link(sections[i].id);
 
-      if (window.scrollY > 200) {
-        document.getElementById('header').style.backgroundColor = '#fc4036';
-        document.getElementById('header').style.transition = '0.3s';
-      }
+//       if (window.scrollY > 200) {
+//         document.getElementById('header').style.backgroundColor = '#fc4036';
+//         document.getElementById('header').style.transition = '0.3s';
+//       }
 
-      if (inView(sections[i]) && !next) {
-        current.classList.add('current');
-        next = true;
-      } else {
-        current.classList.remove('current');
-      }
-    }
-  }
+//       if (inView(sections[i]) && !next) {
+//         current.classList.add('current');
+//         next = true;
+//       } else {
+//         current.classList.remove('current');
+//       }
+//     }
+//   }
 
-  update();
-  window.addEventListener('scroll', update);
-};
+//   update();
+//   window.addEventListener('scroll', update);
+// };
 
-// Initialize the scrolling function
-init();
+// // Initialize the scrolling function
+// init();
 
 // Side navigation
 function openNav() {

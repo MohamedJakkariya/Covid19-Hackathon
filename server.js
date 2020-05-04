@@ -1,16 +1,70 @@
-const express = require('express');
-// const covid19 = ('covid19-api');
+require('dotenv').config();
+
+const express = require('express'),
+    mongoose = require('mongoose'),
+    passport = require('passport'),
+    flash = require('connect-flash'),
+    bodyParser = require('body-parser'),
+    session = require('express-session');
 
 const app = express();
 
 app.use(express.static(__dirname + '/public'));
 
+// Passport Config
+require('./config/passport')(passport);
+
+// DB Config
+// const db = require('./config/keys').mongoURI;
+// 'mongodb://localhost:27017/ncc'
+// Connect to MongoDB
+mongoose
+  .connect('mongodb://localhost:27017/adminpanel', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,  
+    useFindAndModify: false,
+    useCreateIndex: true
+  })
+  .then(() => console.log('MongoDB Connected'))
+  .catch((err) => console.log(err));
+
+
 // View engine setup
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/html/index.html');
-});  
+
+// Set middleware 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Express Session configuration
+app.use(
+  session({
+    secret: process.env.SESSIONSECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Connect flash
+app.use(flash());
+
+// Global variables
+app.use(function (req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
+// Routes
+app.use('/', require('./routes/index.js'));
+app.use('/user', require('./routes/user.js'));
+app.use('/admin', require('./routes/admin.js'));
 
 const PORT = process.env.PORT || 4000;
 
