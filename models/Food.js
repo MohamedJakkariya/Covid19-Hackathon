@@ -13,7 +13,7 @@ const FoodSchema = new mongoose.Schema({
       type: Number,
       required: true,
     },
-    address: {
+    currentAddress: {
       type: String,
       required: true,
     },
@@ -21,7 +21,7 @@ const FoodSchema = new mongoose.Schema({
       type: Boolean,
       default: false,
     },
-    foodMembers: {
+    foodmembers: {
       type: String
     },
     foodlist: {

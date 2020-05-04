@@ -1,8 +1,8 @@
+const manipulationUser = require('../db/manipulation-User');
 const express = require('express'),
   router = express.Router(),
   bcrypt = require('bcryptjs'),
   passport = require('passport');
-  // manipulationUser = require('../db/manipulation-User'),
   // manipulationAdmin = require('../db/manipulation-Admin'),
   // crypto = require('crypto-random-string');
   // nodemailer = require('nodemailer');
@@ -10,16 +10,7 @@ const express = require('express'),
 //   { } = require('../config/auth');
 
 // Load User model
-const User = require('../models/User'),
-      Personal = require('../models/Personal'),
-      Lab = require('../models/Lab'),
-      Food = require('../models/Food'),
-      Symptoms = require('../models/Symptoms'),
-      Hospital = require('../models/Hospital'),
-      Transport = require('../models/Transport'),
-      Doctor = require('../models/Doctor');
-
-
+ User = require('../models/User');
 
 // Login Page
 router.get('/signup', (req, res) => res.render('signup'));
@@ -163,6 +154,12 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
  
+router.get('/logout', (req, res) => {
+  req.logout();
+  req.flash('success_msg', 'You are logged out');
+  res.redirect('/user/login');
+})
+
 // Apply stuff GET route
 router.get('/sympotoms', (req, res) =>
   res.render('apply', {
@@ -230,13 +227,13 @@ router.post('/sympotoms', (req, res) => {
 
 router.post('/food', (req, res) =>{
   console.log(req.body);
-  res.send('sussessfuly posted');
+  manipulationUser.insertDataToFood(req, res);
   }
 );
 
 router.post('/transport', (req, res) =>{
   console.log(req.body);
-  res.send('sussessfuly posted');
+  manipulationUser.insertDataToTransport(req, res);
   }
 );
 

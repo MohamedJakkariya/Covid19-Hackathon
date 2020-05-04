@@ -6,7 +6,7 @@
     <div id="user-dashboard">
           <div class="side-panel">
             <div class="profile">
-                <a href="#" class="fa fa-sign-out logout"></a>
+                <a href="/user/logout" class="fa fa-sign-out logout"></a>
                 <img src="../img/profile.jpg" alt="">
                 <a href="#" class="fa fa-edit edit"></a>
             </div>
@@ -47,6 +47,8 @@
 
           <!-- Main panel  -->
           <div class="main-panel">
+            <%- include('partials/messages') %>
+
             <section id="statistics">
                 <div class="analysis">
                   <div class="box">
