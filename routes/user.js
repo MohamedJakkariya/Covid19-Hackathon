@@ -10,7 +10,16 @@ const express = require('express'),
 //   { } = require('../config/auth');
 
 // Load User model
-const User = require('../models/User');
+const User = require('../models/User'),
+      Personal = require('../models/Personal'),
+      Lab = require('../models/Lab'),
+      Food = require('../models/Food'),
+      Symptoms = require('../models/Symptoms'),
+      Hospital = require('../models/Hospital'),
+      Transport = require('../models/Transport'),
+      Doctor = require('../models/Doctor');
+
+
 
 // Login Page
 router.get('/signup', (req, res) => res.render('signup'));
@@ -58,6 +67,7 @@ router.post('/signup', (req, res) => {
     nationality,
     state,
     district,
+    address
   } = req.body;
   let errors = [];
 
@@ -107,6 +117,7 @@ router.post('/signup', (req, res) => {
           nationality,
           state,
           district,
+          address,
           type
         });
 
@@ -155,17 +166,60 @@ router.post('/login', (req, res, next) => {
 // Apply stuff GET route
 router.get('/sympotoms', (req, res) =>
   res.render('apply', {
-    action: '/user/symptoms',
+    action: 'symptoms',
     For: 'Inform for symptoms'
   })
 );
 
 router.get('/food', (req, res) =>
   res.render('apply', {
-    action: '/user/food',
+    action: 'food',
     For: 'Apply for food'
   })
 );
+
+router.get('/transport', (req, res) =>
+  res.render('apply', {
+    action: 'transport',
+    For: 'Apply for Transport Pass'
+  })
+);
+
+router.get('/personal', (req, res) =>
+  res.render('apply', {
+    action: 'personal',
+    For: 'Apply for Personal Pass'
+  })
+);
+
+router.get('/hospital', (req, res) =>
+  res.render('apply', {
+    action: 'hospital',
+    For: 'Apply for hospital admission'
+  })
+);
+
+router.get('/doctor', (req, res) =>
+  res.render('apply', {
+    action: 'doctor',
+    For: 'Apply for doctor appointment'
+  })
+);
+
+router.get('/lab', (req, res) =>
+  res.render('apply', {
+    action: 'lab',
+    For: 'Apply for lab result'
+  })
+);
+
+router.get('/volunteer', (req, res) =>
+  res.render('apply', {
+    action: 'volunteer',
+    For: 'Apply for volunteer member'
+  })
+);
+
 
 // Apply stuff POST route
 router.post('/sympotoms', (req, res) => {
@@ -180,4 +234,39 @@ router.post('/food', (req, res) =>{
   }
 );
 
+router.post('/transport', (req, res) =>{
+  console.log(req.body);
+  res.send('sussessfuly posted');
+  }
+);
+
+router.post('/personal', (req, res) =>{
+  console.log(req.body);
+  res.send('sussessfuly posted');
+  }
+);
+
+router.post('/hospital', (req, res) =>{
+  console.log(req.body);
+  res.send('sussessfuly posted');
+  }
+);
+
+router.post('/doctor', (req, res) =>{
+  console.log(req.body);
+  res.send('sussessfuly posted');
+  }
+);
+
+router.post('/lab', (req, res) =>{
+  console.log(req.body);
+  res.send('sussessfuly posted');
+  }
+);
+
+router.post('/volunteer', (req, res) =>{
+  console.log(req.body);
+  res.send('sussessfuly posted');
+  }
+);
 module.exports = router;

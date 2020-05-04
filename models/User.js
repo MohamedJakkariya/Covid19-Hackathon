@@ -38,13 +38,7 @@ const UserSchema = new mongoose.Schema({
   education : {
     type: String
   },
-  comaddress : {
-    type: String
-  },
-  comdist : {
-    type: String
-  },
-  postoffice : {
+  address : {
     type: String
   },
   bloodgroup : {
@@ -57,6 +51,10 @@ const UserSchema = new mongoose.Schema({
     type : Date
   },
   isVerified: {
+    type : Boolean,
+    default: false
+  },
+  isVolunteer: {
     type : Boolean,
     default: false
   }

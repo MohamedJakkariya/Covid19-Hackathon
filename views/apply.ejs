@@ -9,7 +9,7 @@
     <%- include('navbar') %>
     
     <!-- form container  -->
-    <form action="/users/<%= action %>" method="POST" class="container">
+    <form action="/user/<%= action %>" method="POST" class="container">
       <!-- w container  -->
       
       <div id="w">
@@ -20,101 +20,205 @@
             <div id="content-register">
               <h2><%= For %></h2>
               <div class="content">
+                <!-- Applicant name  -->
+                <div class="form-group row">
+                    <label class="col-md-5" for="aname">Applicant Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="aname"
+                      class="form-control col-md-7"
+                      autocomplete="on"
+                    />
+                  </div>
   
-                <!-- Full name  -->
+                <!-- Mobile number  -->
+                <div class="form-group row">
+                    <label class="col-md-5" for="mobile">Contact Number: </label>
+                    <input
+                      name="mobile"
+                      id="mobile"
+                      placeholder="+91"
+                      type="tel"
+                      minlength="10"
+                      class="form-control col-md-7"
+                    />
+                </div>
+  
+                <!-- Age  -->
+                <div class="form-group row">
+                  <label class="col-md-5" for="age">Age</label>
+                  <input
+                    type="number"
+                    name="age"
+                    id="age"
+                    class="form-control col-md-7"
+                  />
+                </div>
+            
+                <!-- Address  -->
+                <div class="form-group row">
+                    <label class="col-md-5" for="fname">Current Address</label>
+                    <textarea id="address" name="currentAddress" cols="40" rows="5" class="form-control col-md-7" required="required"></textarea>
+                </div>
+
+
+                <!-- FOR symptoms  -->
+                <% if(action === 'symptoms' || action === 'doctor') { %>
+                <!-- Symptom name  -->
                 <div class="form-group row pt-4">
-                  <label class="col-md-5" for="fname">Full Name</label>
+                  <label class="col-md-5" for="fname">Symptoms Name</label>
                   <input
                     type="text"
-                    name="fullname"
+                    name="symptomName"
+                    placeholder="ex.cold, cough"
                     id="fname"
                     class="form-control col-md-7"
                     autocomplete="on"
                   />
                 </div>
-  
-                <!-- Gender -->
+                
+                <!-- how Long name  -->
                 <div class="form-group row">
-                  <label class="col-md-4 pt-3">Gender</label>
-                  <div class="p-3 col-md-8">
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input name="gender" id="gender_0" type="radio" class="custom-control-input" value="M" 
-                        checked="checked">
-                      <label for="gender_0" class="custom-control-label">Male</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input name="gender" id="gender_1" type="radio" class="custom-control-input" value="F" >
-                      <label for="gender_1" class="custom-control-label">Female</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input name="gender" id="gender_2" type="radio" class="custom-control-input" value="TG" >
-                      <label for="gender_2" class="custom-control-label">Transgender</label>
-                    </div>
-                  </div>
-                </div>
-  
-                <!-- Mobile number  -->
-                <div class="form-group row">
-                  <label for="mobile" class="col-md-5">Mobile</label>
-                  <div class="col-sm-7 col-md-2 ">
-                    <input name="prefix" type="tel" minlength="10" maxlength="10" class="form-control" placeholder="+91">
-                  </div>
-                  
-                  <div class="col-sm-7 col-md-5 pr-2">
-                    <input id="mobile" name="mobile" type="tel" minlength="10" maxlength="10" class="form-control">
-                  </div>
-                </div>
-  
-                <!-- Dob  -->
-                <div class="form-group row">
-                  <label for="dob" class="col-md-5">Date of Birth</label>
-                  <div class="col-md-7">
-                    <input id="dob" name="dob" type="date"  class="form-control">
-                  </div>
-                </div>
-  
-                <!-- Age  -->
-                <div class="form-group row">
-                  <label for="age" class="col-md-5">Age</label>
-                  <div class="col-md-7">
-                    <input id="age" name="age" type="number" min="10" max="30"  class="form-control">
-                  </div>
-                </div>
-  
-                <!-- Nationality  -->
-                <div class="form-group row">
-                  <label for="nationality" class="col-md-5">Nationality</label>
-                  <div class="col-md-7">
-                    <select id="nationality" name="nationality"  class="custom-select">
-                      <option value="IND">Indian</option>
-                      <option value="CAN">Canadian</option>
-                      <option value="AME">American</option>
-                      <option value="AUS">Australian</option>
-                    </select>
-                  </div>
+                  <label class="col-md-5" for="fname">How many days ?</label>
+                  <input
+                    type="number"
+                    name="days"
+                    id="fname"
+                    class="form-control col-md-7"
+                  />
                 </div>
 
-                <!-- State  -->
+                   <!-- how Tablets name  -->
                 <div class="form-group row">
-                  <label for="state" class="col-md-5">State</label>
-                  <div class="col-md-7">
-                    <select id="state" onchange='selct_district(this.value)' name="state" 
-                      class="custom-select">
-                    </select>
-                    </select>
-                  </div>
+                  <label class="col-md-5" for="fname">If you take any tablets?</label>
+                  <input
+                    type="text"
+                    name="tablets"
+                    id="fname"
+                    placeholder="ex.pharacetamal,"
+                    class="form-control col-md-7"
+                  />
                 </div>
   
-                <!-- District  -->
-                <div class="form-group row">
-                  <label for="comdist" class="col-md-5">District</label>
-                  <div class="col-md-7">
-                    <select id="comdist" name="district"  class="custom-select">
-                      <option value="slt-dis" selected disabled>Select a State first</option>
-                    </select>
-                  </div>
+                  <!-- Question no - 1  -->
+                  <div class="form-group row">
+                    <label class="col-md-5">After you are go to hospital or Not?</label>
+                    <div class="yesOrNo col-md-7">
+                        <div class="custom-control custom-radio custom-control-inline">
+                        <input name="hospitalGo" id="hospital_0" type="radio" class="custom-control-input" value="true">
+                        <label for="hospital_0" class="custom-control-label">Yes</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                        <input name="hospital" id="hospital_1" type="radio" class="custom-control-input" value="false">
+                        <label for="hospital_1" class="custom-control-label">No</label>
+                        </div>
+                    </div>
                 </div>
-  
+
+                <!-- how Long name  -->
+                <div class="form-group row">
+                  <label class="col-md-5" for="fname">If yes put name of the Hospital ?</label>
+                  <input
+                    type="text"
+                    name="hospitalNname"
+                    id="fname"
+                    placeholder="ex.kauveri hospital, kodampakkam, chennai - 600 002,"
+                    class="form-control col-md-7"
+                  />
+                </div>
+                <% } %>
+
+                <!-- For Food  -->
+                <% if(action === 'food') { %>
+                <!-- how Long name  -->
+                <div class="form-group row">
+                  <label class="col-md-5" for="fname">How many members do you have ?</label>
+                  <input
+                    type="number"
+                    name="foodmembers"
+                    id="fname"
+                    class="form-control col-md-7"
+                    required="required"
+                  />
+                </div> 
+
+                 <!-- Food type  -->
+                 <div class="form-group row">
+                    <label class="col-md-5" for="foodlist">What type of food do you want ?</label>
+                    <textarea id="foodlist" name="foodlist" cols="40" rows="5" class="form-control col-md-7" required="required" placeholder="Ex. Fruits, Vegetables,"></textarea>
+                </div>
+                <% } %>
+
+                <% if(action === 'transport') { %>
+                <div class="form-group row">
+                    <label class="col-md-5" for="month">How many month you want ?</label>
+                    <input
+                        type="number"
+                        name="transportMonth"
+                        id="month"
+                        class="form-control col-md-7"
+                        required="required"
+                    />
+                </div>  
+
+                 <!-- transport  -->
+                 <div class="form-group row">
+                    <label for="transport" class="col-md-5">Transport Type</label>
+                    <div class="col-md-7">
+                      <select id="transport" name="transportType"  class="custom-select">
+                        <option value="car">Indian</option>
+                        <option value="two-wheeler">Canadian</option>
+                        <option value="auto">American</option>
+                      </select>
+                    </div>
+                  </div>
+                <% } %>
+                
+                <% if(action === 'volunteer') { %>
+                    <div class="form-group row">
+                        <label class="col-md-5">Are you become a volunteer of our community for help to others ?</label>
+                        <div class="yesOrNo col-md-7">
+                            <div class="custom-control custom-radio custom-control-inline">
+                            <input name="volunteer" id="volunteer_0" type="radio" class="custom-control-input" value="true">
+                            <label for="volunteer_0" class="custom-control-label">Yes</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                            <input name="volunteer" id="volunteer_1" type="radio" class="custom-control-input" value="false">
+                            <label for="volunteer_1" class="custom-control-label">No</label>
+                            </div>
+                        </div>
+                    </div>    
+                <% } %>
+
+
+                <!-- For filling hospital admisstion -->
+                <% if(action === 'hospital') { %>
+                    <div class="form-group row">
+                        <label class="col-md-5" for="hname">Which hopital you visit before ?</label>
+                        <input
+                            type="text"
+                            name="hospinalNname"
+                            id="hname"
+                            class="form-control col-md-7"
+                            required="required"
+                        />
+                    </div>
+
+                    <!-- Address  -->
+                    <div class="form-group row">
+                        <label class="col-md-5" for="fname">Hospital Full Address</label>
+                        <textarea id="address" name="currentAddress" cols="40" rows="5" class="form-control col-md-7" required="required"></textarea>
+                    </div>
+
+                    <!-- upload doctor medical sheet  -->
+                    <div class="pt-2 form-group row">
+                        <label for="avatar" class="col-md-5">Medial Sheet photo</label>
+                        <input id="avatar" name="medialSheet" type="file"  aria-describedby="avatarHelpBlock"
+                            class="form-control col-md-7">
+                    </div>
+                <% } %>
+
               </div>
             </div>
 
