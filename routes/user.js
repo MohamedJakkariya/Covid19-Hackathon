@@ -163,7 +163,7 @@ router.get('/logout', (req, res) => {
 // Apply stuff GET route
 router.get('/sympotoms', (req, res) =>
   res.render('apply', {
-    action: 'symptoms',
+    action: 'sympotoms',
     For: 'Inform for symptoms'
   })
 );
@@ -221,7 +221,7 @@ router.get('/volunteer', (req, res) =>
 // Apply stuff POST route
 router.post('/sympotoms', (req, res) => {
   console.log(req.body);
-  res.send('sussessfuly posted');
+  manipulationUser.insertDataToSymptoms(req, res);
   }
 );
 
@@ -239,31 +239,36 @@ router.post('/transport', (req, res) =>{
 
 router.post('/personal', (req, res) =>{
   console.log(req.body);
-  res.send('sussessfuly posted');
+  manipulationUser.insertDataToPersonal(req, res);
   }
 );
 
 router.post('/hospital', (req, res) =>{
   console.log(req.body);
-  res.send('sussessfuly posted');
+  manipulationUser.insertDataHospital(req, res);
   }
 );
 
 router.post('/doctor', (req, res) =>{
   console.log(req.body);
-  res.send('sussessfuly posted');
+  manipulationUser.insertDataToSymptoms(req, res);
   }
 );
 
 router.post('/lab', (req, res) =>{
   console.log(req.body);
-  res.send('sussessfuly posted');
+  manipulationUser.insertDataToLab(req, res);
   }
 );
 
 router.post('/volunteer', (req, res) =>{
-  console.log(req.body);
-  res.send('sussessfuly posted');
+  console.log(req.body.volunteer);
+  if(req.body.volunteer === 'false'){
+        req.flash('error_msg', 'Not appreciated answer!');
+        res.redirect('/user-profile')
+  }else{
+    manipulationUser.setVolunteer(req, res);
+  }
   }
 );
 module.exports = router;

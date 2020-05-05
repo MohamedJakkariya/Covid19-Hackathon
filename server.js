@@ -20,7 +20,7 @@ const db = require('./config/keys').mongoURI;
 // 'mongodb://localhost:27017/adminpanel'
 // Connect to MongoDB
 mongoose
-  .connect(db, {
+  .connect('mongodb://localhost:27017/adminpanel', {
     useNewUrlParser: true,
     useUnifiedTopology: true,  
     useFindAndModify: false,

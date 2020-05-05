@@ -24,7 +24,7 @@ const HospitalSchema = new mongoose.Schema({
     hospitalName: {
         type: String
     },
-    address: {
+    hospitalAddress: {
         type: String
     }
   });

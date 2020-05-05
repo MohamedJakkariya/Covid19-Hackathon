@@ -9,15 +9,15 @@
     <%- include('navbar') %>
     
     <!-- form container  -->
-    <form action="/user/<%= action %>" method="POST" class="container">
+    <form action="/user/<%= action %>" method="POST" enctype="multipart/form-data" class="container">
       <!-- w container  -->
       
       <div id="w">
         <div id="page">
           
+          <%- include ('partials/messages') %>
           <!-- Applicant Details  -->
           <div id="content-register">
-            <%- include ('partials/messages') %>
             <h2><%= For %></h2>
             <div class="content">
               <!-- Applicant name  -->
@@ -64,7 +64,7 @@
 
 
                 <!-- FOR symptoms  -->
-                <% if(action === 'symptoms' || action === 'doctor') { %>
+                <% if(action === 'sympotoms' || action === 'doctor') { %>
                 <!-- Symptom name  -->
                 <div class="form-group row pt-4">
                   <label class="col-md-5" for="fname">Symptoms Name</label>
@@ -72,6 +72,7 @@
                     type="text"
                     name="symptomName"
                     placeholder="ex.cold, cough"
+                    required="required"
                     id="fname"
                     class="form-control col-md-7"
                     autocomplete="on"
@@ -85,6 +86,7 @@
                     type="number"
                     name="days"
                     id="fname"
+                    required="required"
                     class="form-control col-md-7"
                   />
                 </div>
@@ -96,6 +98,7 @@
                     type="text"
                     name="tablets"
                     id="fname"
+                    required="required"
                     placeholder="ex.pharacetamal,"
                     class="form-control col-md-7"
                   />
@@ -106,11 +109,12 @@
                     <label class="col-md-5">After you are go to hospital or Not?</label>
                     <div class="yesOrNo col-md-7">
                         <div class="custom-control custom-radio custom-control-inline">
-                        <input name="hospitalGo" id="hospital_0" type="radio" class="custom-control-input" value="true">
+                        <input name="hospitalGo" id="hospital_0" type="radio" class="custom-control-input" value="true" 
+                        >
                         <label for="hospital_0" class="custom-control-label">Yes</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                        <input name="hospital" id="hospital_1" type="radio" class="custom-control-input" value="false">
+                        <input name="hospitalGo" checked="checked"  id="hospital_1" type="radio" class="custom-control-input" value="false">
                         <label for="hospital_1" class="custom-control-label">No</label>
                         </div>
                     </div>
@@ -121,8 +125,9 @@
                   <label class="col-md-5" for="fname">If yes put name of the Hospital ?</label>
                   <input
                     type="text"
-                    name="hospitalNname"
+                    name="hospitalName"
                     id="fname"
+                    required="required"
                     placeholder="ex.kauveri hospital, kodampakkam, chennai - 600 002,"
                     class="form-control col-md-7"
                   />
@@ -184,7 +189,7 @@
                             <label for="volunteer_0" class="custom-control-label">Yes</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                            <input name="volunteer" id="volunteer_1" type="radio" class="custom-control-input" value="false">
+                            <input name="volunteer" id="volunteer_1" type="radio" class="custom-control-input" checked="checked" value="false">
                             <label for="volunteer_1" class="custom-control-label">No</label>
                             </div>
                         </div>
@@ -198,7 +203,7 @@
                         <label class="col-md-5" for="hname">Which hopital you visit before ?</label>
                         <input
                             type="text"
-                            name="hospinalNname"
+                            name="hospinalName"
                             id="hname"
                             class="form-control col-md-7"
                             required="required"
@@ -208,13 +213,13 @@
                     <!-- Address  -->
                     <div class="form-group row">
                         <label class="col-md-5" for="fname">Hospital Full Address</label>
-                        <textarea id="address" name="currentAddress" cols="40" rows="5" class="form-control col-md-7" required="required"></textarea>
+                        <textarea id="address" required="required" name="hospitalAddress" cols="40" rows="5" class="form-control col-md-7" required="required"></textarea>
                     </div>
 
                     <!-- upload doctor medical sheet  -->
                     <div class="pt-2 form-group row">
                         <label for="avatar" class="col-md-5">Medial Sheet photo</label>
-                        <input id="avatar" name="medialSheet" type="file"  aria-describedby="avatarHelpBlock"
+                        <input id="avatar" required="required" name="medicalSheet" type="file"  aria-describedby="avatarHelpBlock"
                             class="form-control col-md-7">
                     </div>
                 <% } %>

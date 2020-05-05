@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />
+
+    <!-- Font Awesome  -->
+    <link
+      rel="stylesheet"
+      href="../lib/font-awesome/css/font-awesome.min.css"
+    />
+
+    <!-- CheetSheet -->
+    <link rel="stylesheet" href="../css/admin-panel.min.css" />
+    <title>DHelp</title>
+  </head>
+  <body>
+    <!-- Go to Unverified Profile  -->
+    <div
+      class="unverified-profile"
+      data-placement="right"
+      data-toggle="tooltip"
+      title="Unverified Profile Available!"
+    >
+      <span id="close-icon" class="fa fa-exclamation-circle text-danger"></span>
+    </div>
+
+    <!-- Announcemnt Icon  -->
+    <form action="#" method="post">
+      <div class="announcement">
+        <span class="fa fa-close" id="close-announcement"></span>
+        <span
+          class="fa fa-bullhorn"
+          data-placement="right"
+          data-toggle="tooltip"
+          title="Announcemnt"
+          id="announcement"
+        ></span>
+        <textarea type="text" id="send-announcement" class="btn btn-primary">
+Announcement :
+        Enter your message here...
+              </textarea
+        >
+        <button type="submit" id="submit-msg">
+          <span class="fa fa-envelope"></span>
+        </button>
+      </div>
+    </form>
+
+    <!-- pdf Icon  -->
+    <form action="#" method="post">
+      <div
+        class="pdf"
+        data-placement="right"
+        data-toggle="tooltip"
+        title="Generate PDF"
+      >
+        <span id="close-pdf" class="fa fa-close"></span>
+        <span class="fa fa-file-pdf-o" id="pdf"></span>
+        <input
+          type="number"
+          placeholder="Enter the year"
+          id="send"
+          class="btn btn-primary"
+        />
+        <button type="submit" id="submit-pdf">
+          <span class="fa fa-send" id="fa-send"></span>
+        </button>
+      </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../lib/animated-counter/animationCounter.min.js"></script>
+    <!-- <script src="../js/main.js"></script> -->
+    <!-- <script src="../js/client.js"></script> -->
+  </body>
+</html>
