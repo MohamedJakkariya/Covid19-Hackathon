@@ -120,7 +120,7 @@ function showGraph(choice){
         data: {
             labels: state,
             datasets: [{
-                label: `${choice}`,
+                label: `Currenty in India ${choice}`,
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: getData(choice)
