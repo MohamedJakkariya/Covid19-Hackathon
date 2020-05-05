@@ -65,8 +65,11 @@ function closeNav() {
   document.querySelector('#header').style.backgroundColor = '#fc4036';
 }
 
+
+// Fix the cors policy mechanism 
+// https://cors-anywhere.herokuapp.com/
 // Get Api Data
-const URL = 'https://covid19api.io/api/v1/';
+const URL = 'https://cors-anywhere.herokuapp.com/https://covid19api.io/api/v1/';
 
 function getCountryReport() {
     console.log($('#country').find(":selected").text());
