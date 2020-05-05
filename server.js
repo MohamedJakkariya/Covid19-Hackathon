@@ -37,9 +37,6 @@ app.set('view engine', 'ejs');
 app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// Set middleware 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Express Session configuration
 app.use(
@@ -69,6 +66,7 @@ app.use(function (req, res, next) {
 app.use('/', require('./routes/index.js'));
 app.use('/user', require('./routes/user.js'));
 app.use('/admin', require('./routes/admin.js'));
+
 
 const PORT = process.env.PORT || 4000;
 
