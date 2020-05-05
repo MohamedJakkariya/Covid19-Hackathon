@@ -94,7 +94,7 @@ function getCountryReport() {
 
 
 // Get init report 
-// getCountryReport();
+getCountryReport();
 
 
 // Generate Chart 
@@ -168,7 +168,7 @@ function initGraph(){
 }
 
 // Initialize the graph 
-// initGraph()
+initGraph()
 
 const getData = (choice) => {
     switch(choice){

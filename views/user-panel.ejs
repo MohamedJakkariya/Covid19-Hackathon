@@ -7,7 +7,7 @@
           <div class="side-panel">
             <div class="profile">
                 <a href="/user/logout" class="fa fa-sign-out logout"></a>
-                <img src="../img/profile.jpg" alt="">
+                <img src="../img/profile2.jpg" alt="">
                 <a href="#" class="fa fa-edit edit"></a>
             </div>
 
@@ -34,9 +34,9 @@
                   <span class="fa fa-caret-down"></span>
                 </button>
                 <div id="location">
-                  <a class="dropdown-item" href="#">Near Hospitals</a>
-                  <a class="dropdown-item" href="#">Near Pharmacy</a>
-                  <a class="dropdown-item" href="#">Near Shelter</a>
+                  <a class="dropdown-item" href="#hospitals">Near Hospitals</a>
+                  <a class="dropdown-item" href="#pharmacy">Near Pharmacy</a>
+                  <a class="dropdown-item" href="#shelter">Near Shelter</a>
                 </div>
             </div>
 
@@ -91,7 +91,6 @@
                     </div>
                   </div>        
                 </div>
-          
                 <div class="chart">
                     <div class="option">
                       <div class="radio-group">
@@ -128,12 +127,50 @@
                   <canvas id="chart"></canvas>
                 </div>
               </section>
+              <section id="maps">
+                <h2 id="hospitals">Near Hospitals</h2>
+                <hr>
+                  <!-- near public hospitals  -->
+                <div class="hospitals">
+                  <iframe
+                    frameborder="0"
+                    style="border: 0;"
+                    src="https://www.google.com/maps/embed/v1/place?q=hospials&key=AIzaSyCcQORSHFVvlVqB64Jbxdm9wXusn0Tzt30"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                
+                <h2 id="pharmacy">Near Pharmacy</h2>
+                <hr>
+                <!-- Near pharmacy -->
+                <div class="pharmacy">
+                  <iframe
+                  frameborder="0"
+                  style="border: 0;"
+                  src="https://www.google.com/maps/embed/v1/place?q=pharmacy&key=AIzaSyCcQORSHFVvlVqB64Jbxdm9wXusn0Tzt30"
+                  allowfullscreen
+                ></iframe>
+                </div>
+
+                <h2 id="shelter">Near Shelters</h2>
+                <hr>
+                <!-- Near public shelter  -->
+                <div class="shelters">
+                  <iframe
+                    frameborder="0"
+                    style="border: 0;"
+                    src="https://www.google.com/maps/embed/v1/place?q=shelters&key=AIzaSyCcQORSHFVvlVqB64Jbxdm9wXusn0Tzt30"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </section>
 
               <section id="articals">
                   <h1>Articles</h1>
+                  <hr>
                 <div class="card-group">
                     <div class="card m-2">
-                      <img class="card-img-top" src="../img/profile2.jpg" alt="Card image cap">
+                      <img class="card-img-top" src="../img/profile.jpg" alt="Card image cap">
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
