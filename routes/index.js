@@ -1,14 +1,19 @@
 const express = require('express');
 
-const router = express.Router();
-const manipulationforAdmin = require('../db/manipulation-Admin');
+const router = express.Router(),
+       manipulationforAdmin = require('../db/manipulation-Admin'),
+       {ensureAuthenticated} = require('../config/auth');
 
 // Welcome Page
 router.get('/', (req, res) => res.render('index'));
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard',ensureAuthenticated, (req, res) => {
   manipulationforAdmin.getStatistics(req,res, 'admin-panel');
 });
-router.get('/user-profile', (req, res) => res.render('user-panel'));
+router.get('/user-profile',ensureAuthenticated, (req, res) => res.render('user-panel',{
+  Id: req.user._id
+}));
+
+// For push notification 
 webpush = require("web-push");
 
 const publicVapidKey =

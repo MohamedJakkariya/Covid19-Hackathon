@@ -146,7 +146,6 @@ router.get('/login', (req, res) =>
 
 // Login
 router.post('/login', (req, res, next) => {
-  console.log(req.body);
   passport.authenticate('local', {
     successRedirect: '/user-profile',
     failureRedirect: '/user/login',
@@ -210,11 +209,10 @@ router.get('/lab', (req, res) =>
   })
 );
 
-router.get('/volunteer', (req, res) =>
-  res.render('apply', {
-    action: 'volunteer',
-    For: 'Apply for volunteer member',
-  })
+router.get('/volunteer/:id', (req, res) => {
+  console.log(req.params.id);
+  manipulationUser.setVolunteer(req, res);  
+}
 );
 
 // Apply stuff POST route

@@ -90,3 +90,16 @@ exports.getStatistics = async (req, res, route) => {
 };
 
 
+exports.getResults = (res, Class, route, nameOfSection) => {
+    //   Finding Symptoms calculation 
+  Class.find({}, (err, docs) => {
+    if (err) throw err;
+
+    console.log(docs);
+    
+    res.render(route, {
+        docs,
+        category: nameOfSection
+    });
+  });
+}

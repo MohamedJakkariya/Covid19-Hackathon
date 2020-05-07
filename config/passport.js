@@ -9,7 +9,7 @@ module.exports = function (passport) {
     passport.use(
         new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
           // // Match user
-          Login.findOne({
+          User.findOne({
             email: email,
           })
             .then((user) => {
@@ -42,7 +42,7 @@ module.exports = function (passport) {
                   .catch((err) => console.log(err)); // End of Then
               } // End of If
     
-              // Check whether the user is not in the Login 
+              // Check whether the user is not in the User 
               const userpassword = user === null ? true : false;
               if (userpassword) {
               } else {
@@ -81,10 +81,10 @@ module.exports = function (passport) {
       passport.deserializeUser(function (obj, done) {
         // console.log('In deserializeUser  id is = '+ obj.type);
     
-        const condtion = obj.type === 'Login' ? true : false;
+        const condtion = obj.type === 'User' ? true : false;
     
         if (condtion) {
-          Login.findById(obj.id, function (err, user) {
+          User.findById(obj.id, function (err, user) {
             if (err) {
               console.log(err);
             }

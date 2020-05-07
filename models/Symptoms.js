@@ -34,7 +34,7 @@ const SymptomsSchema = new mongoose.Schema({
   hospitalGo:{
       type: Boolean
   },
-  hopitalName:{
+  hospitalName:{
       type: String
   }
 });

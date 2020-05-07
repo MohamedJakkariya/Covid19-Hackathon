@@ -24,7 +24,7 @@
                   <a class="dropdown-item" href="/user/hospital">Hospital Admission</a>
                   <a class="dropdown-item" href="/user/doctor">Doctor Appointment</a>
                   <a class="dropdown-item" href="/user/lab">Lab Result</a>
-                  <a class="dropdown-item" href="/user/volunteer">Volunteer</a>
+                  <a class="dropdown-item" type="button" data-toggle="modal" data-target="#pop-confirmation" href="#">Volunteer</a>
                 </div>
             </div>
 
@@ -206,6 +206,115 @@
           </div>
     </div>
 
+    <!-- Modal open when click the voluteer button  -->
+     <!--Confirmatio Modal -->
+     <div class="modal fade" id="pop-confirmation" tabindex="-1" role="dialog" aria-labelledby="pop-confirmationTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Verify once again</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure become a volunteer of our community?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+            <button type="button" class="btn btn-success" id="pop-up"  onclick="setVolunteer('<%= Id %>')">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Intimation for success Modal -->
+    <div class="modal fade" id="pop-intimation" tabindex="-1" role="dialog" aria-labelledby="pop-intimationTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-success" id="exampleModalLongTitle">Success</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Successfully you are added a volunteer list!
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Intimation for Not verified Modal -->
+    <div class="modal fade" id="pop-not-verified" tabindex="-1" role="dialog" aria-labelledby="pop-not-verifiedTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-warning">Not Verified</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Currently you're Not Verified User! Kindly check after verification!
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!--Intimation for Override Modal -->
+      <div class="modal fade" id="pop-not-verified" tabindex="-1" role="dialog" aria-labelledby="pop-not-verifiedTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-primary">You're already a Volunteer</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Oops! you are already volunteer of our community asap!
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Intimation for Error Modal -->
+      <div class="modal fade" id="pop-error" tabindex="-1" role="dialog" aria-labelledby="pop-not-verifiedTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-danger">Problem</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Something went wrong! such as db connection or admin disconnect. so kindly try again after some time. Thank you.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 <%- include('footer') %>
     <script src="../js/main.js"></script>
   </body>

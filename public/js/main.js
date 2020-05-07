@@ -85,7 +85,6 @@ function getCountryReport() {
     onClose: function () {},
   });
 
-  console.log($('#country').find(':selected').text());
   let currentCountry = $('#country').find(':selected').text();
 
   fetch(`${URL}/AllReports`)
@@ -98,7 +97,6 @@ function getCountryReport() {
             $('#recovered').html(country.TotalRecovered);
             $('#confirmed').html(country.TotalCases);
             $('#deaths').html(country.TotalDeaths);
-            console.log(country.TotalCases);
             $('#statistics').waitMe('hide');
             return;
           }
@@ -168,8 +166,6 @@ function initGraph() {
     .then((res) => res.json())
     .then((data) => {
       for (let i = 1; i < data.data[0].table.length; i++) {
-        console.log(data.data[0].table[i].active);
-
         state.push(data.data[0].table[i].state);
         active.push(data.data[0].table[i].active);
         recovered.push(data.data[0].table[i].recovered);
@@ -206,4 +202,58 @@ $(document).ready(() => {
   $('#toggle-location').click(() => {
     $('#location').fadeToggle('slow');
   });
+  $('#pop-up').click(() => {
+    $('#pop-up').waitMe({
+      effect : 'bouncePulse',
+      text : '',
+      bg : 'rgba(255,255,255,0.7)',
+      color : '#000',
+      maxSize : '',
+      waitTime : -1,
+      textPos : 'vertical',
+      fontSize : '',
+      source : '',
+      maxSize : 30,
+      onClose : function() {}
+      });
+  });
 });
+
+
+// Set setVolunteer 
+function setVolunteer(id){
+
+  fetch(`/user/volunteer/${id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data.toString());
+
+      switch(data.toString()){
+        case 'success':
+          $('#pop-up').waitMe('hide');
+          $('#pop-confirmation').modal('hide');
+          $('#pop-intimation').modal('show');  
+          break;
+        case 'error':
+          $('#pop-up').waitMe('hide');
+          $('#pop-confirmation').modal('hide');
+          $('#pop-error').modal('show');  
+          break;
+        case 'override':
+          $('#pop-up').waitMe('hide');
+          $('#pop-confirmation').modal('hide');
+          $('#pop-override').modal('show');  
+          break;
+        case 'notverified':
+          $('#pop-up').waitMe('hide');
+          $('#pop-confirmation').modal('hide');
+          $('#pop-not-verified').modal('show');  
+          break;
+        default:
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
+}

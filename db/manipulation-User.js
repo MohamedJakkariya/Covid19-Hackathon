@@ -4,7 +4,8 @@ const Personal = require('../models/Personal'),
   Symptoms = require('../models/Symptoms'),
   Hospital = require('../models/Hospital'),
   Transport = require('../models/Transport'),
-  Doctor = require('../models/Doctor');
+  Doctor = require('../models/Doctor'),
+  User = require('../models/User');
 
 exports.insertDataToFood = (req, res) => {
   const { name, mobile, age, currentAddress, foodmembers, foodlist } = req.body;
@@ -60,6 +61,8 @@ exports.insertDataToTransport= (req, res) => {
 };
 
 exports.insertDataToSymptoms= (req, res) => {
+  console.log(req.body);
+  
   const { name, mobile, age, currentAddress, symptomName, days,tablets,hospitalName,hospitalGo } = req.body;
 
     const newData = new Symptoms({
@@ -256,25 +259,34 @@ exports.setVolunteer = (req, res) => {
 
 
 exports.setVolunteer = (req, res) => {
-  filter = { id: req.body.id };
-  update = {
-    isVolunteer: true,
-  };
+  let data = '';
+    
+    // `doc` is the document _before_ `update` was applied
+    User.findById(req.params.id, (err, doc) => {
+      if (err) {
+        data = 'error';
+        res.send(JSON.stringify(data));
+      }
 
-  // `doc` is the document _before_ `update` was applied
-  Login.findOneAndUpdate(filter, update, { new: true }, (err, doc) => {
-    if (err) {
-      console.log('Something went wrong when the update!');
-      req.flash('error_msg', 'Something went wrong when Updated!');
-      console.log(errors);
-      res.render('apply', {
-        action: 'volunteer',
-        For: 'Apply for Volunteer member',
-      })
-    }
-    console.log(doc);
-    req.flash('success_msg', 'Now you\'re volunteer of the community!');
-    res.redirect('/user-profile');
-  });
+      // Check Verified user 
+      if(doc.isVerified){
+        // check not a volunteer 
+        if(!doc.isVolunteer){
+          data = 'success';
 
+          doc.isVolunteer = true;
+          doc.save(() => {
+            res.send(JSON.stringify(data));
+          });
+        }else{
+          // check already volunteer 
+          data = 'override';
+          res.send(JSON.stringify(data));
+        }
+      }else{
+        // check not Verified 
+        data = 'notverified';
+        res.send(JSON.stringify(data));
+      }
+    });
 };

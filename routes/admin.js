@@ -2,10 +2,18 @@ const express = require('express');
 const router = express.Router();
 bcrypt = require('bcryptjs'),
 passport = require('passport'),
+
 // Load User model
   Admin = require('../models/Admin'),
-  Login = require('../models/User'),
-  manipulationAdmin = require('../db/manipulation-Admin');
+  manipulationAdmin = require('../db/manipulation-Admin'),
+  Personal = require('../models/Personal'),
+  Lab = require('../models/Lab'),
+  Food = require('../models/Food'),
+  Symptoms = require('../models/Symptoms'),
+  Hospital = require('../models/Hospital'),
+  Transport = require('../models/Transport'),
+  Doctor = require('../models/Doctor'),
+  User = require('../models/User');
 
 // Sign up Page
 router.get('/signup', (req, res) =>
@@ -96,10 +104,51 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
   });
 
+// Logout route 
 router.get('/logout', (req, res) => {
   req.logout();
   req.flash('success_msg', 'You are logged out');
   res.redirect('/admin/login');
+});
+
+// View application statistics of symptoms route 
+router.get('/symptoms', (req, res) => {
+  manipulationAdmin.getResults(res, Symptoms, 'application-dashboard', 'Symptoms');
+});
+
+// View application statistics of hospital route 
+router.get('/hospital', (req, res) => {
+  manipulationAdmin.getResults(res, Hospital, 'application-dashboard', 'Hospital');
+});
+
+// View application statistics of doctor route 
+router.get('/doctor', (req, res) => {
+  manipulationAdmin.getResults(res, Doctor, 'application-dashboard', 'Doctor');
+});
+
+// View application statistics of Food Needy route 
+router.get('/food', (req, res) => {
+  manipulationAdmin.getResults(res, Food, 'application-dashboard', 'Food');
+});
+
+// View application statistics of Transport Needy route 
+router.get('/transport', (req, res) => {
+  manipulationAdmin.getResults(res, Transport, 'application-dashboard', 'Transport');
+});
+
+// View application statistics of Personal Needy route 
+router.get('/personal', (req, res) => {
+  manipulationAdmin.getResults(res, Personal, 'application-dashboard', 'Personal');
+});
+
+// View application statistics of Lab Needy route 
+router.get('/lab', (req, res) => {
+  manipulationAdmin.getResults(res, Lab, 'application-dashboard', 'Lab');
+});
+
+// View application statistics of Volunteers list route 
+router.get('/volunteers', (req, res) => {
+  manipulationAdmin.getResults(res, User, 'application-dashboard', 'Volunteers');
 });
 
 module.exports = router;

@@ -3,50 +3,410 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-                <button class="btn btn-sm btn-outline-secondary">Share</button>
-                <button class="btn btn-sm btn-outline-secondary">Export</button>
-              </div>
-              <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
-              </button>
-            </div>
-          </div>
 
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Name</th>
-                  <th>Mobile</th>
-                  <th>Age</th>
-                  <th>Address</th>
-                  <th>Symtom Name</th>
-                  <th>Days</th>
-                  <th>Tablets</th>
-                  <th>Hospital Checking</th>
-                  <th>Name of Hospital</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><%= name %></td>
-                  <td><%= mobile %></td>
-                  <td></td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                  <td>osmethin</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </main>
+        <!-- For Symptoms Section  -->
+        <% if(category === 'Symptoms'){ %>
+            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2">Symptoms Analytics</h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                      <button class="btn btn-sm btn-outline-secondary">Share</button>
+                      <button class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                      <span data-feather="calendar"></span>
+                      This week
+                    </button>
+                  </div>
+                </div>
+      
+                <div class="table-responsive">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Symtom Name</th>
+                        <th>Days</th>
+                        <th>Tablets</th>
+                        <th>Hospital Checking</th>
+                        <th>Name of Hospital</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% docs.forEach(data => { %>
+                          <tr>
+                              <td><%= data._id %></td>
+                              <td><%= data.name %></td>
+                              <td><%= data.mobile %></td>
+                              <td><%= data.age %></td>
+                              <td><%= data.address %></td>
+                              <td><%= data.symptomName %></td>
+                              <td><%= data.days %></td>
+                              <td><%= data.tablets %></td>
+                              <td><%= data.hospitalGo %></td>
+                              <td><%= data.hospitalName %></td>
+                            </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </main>
+        <% } %>
+       
+
+        <!-- For Hospital section Section  -->
+        <% if(category === 'Hospital'){ %>
+            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2">Hospital Admission</h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                      <button class="btn btn-sm btn-outline-secondary">Share</button>
+                      <button class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                      <span data-feather="calendar"></span>
+                      This week
+                    </button>
+                  </div>
+                </div>
+      
+                <div class="table-responsive">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Visiting Hospital Name</th>
+                        <th>Hosptial Address</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% docs.forEach(data => { %>
+                          <tr>
+                              <td><%= data._id %></td>
+                              <td><%= data.name %></td>
+                              <td><%= data.mobile %></td>
+                              <td><%= data.age %></td>
+                              <td><%= data.address %></td>
+                              <td><%= data.hospitalName %></td>
+                              <td><%= data.hospitalAddress %></td>
+                            </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </main>
+        <% } %>
+
+           <!-- For Symptoms Section  -->
+           <% if(category === 'Doctor'){ %>
+            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2">Doctor Appointment</h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                      <button class="btn btn-sm btn-outline-secondary">Share</button>
+                      <button class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                      <span data-feather="calendar"></span>
+                      This week
+                    </button>
+                  </div>
+                </div>
+      
+                <div class="table-responsive">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Symtom Name</th>
+                        <th>Days</th>
+                        <th>Tablets</th>
+                        <th>Hospital Checking</th>
+                        <th>Name of Hospital</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% docs.forEach(data => { %>
+                          <tr>
+                              <td><%= data._id %></td>
+                              <td><%= data.name %></td>
+                              <td><%= data.mobile %></td>
+                              <td><%= data.age %></td>
+                              <td><%= data.address %></td>
+                              <td><%= data.symptomName %></td>
+                              <td><%= data.days %></td>
+                              <td><%= data.tablets %></td>
+                              <td><%= data.hospitalGo %></td>
+                              <td><%= data.hospitalName %></td>
+                            </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </main>
+        <% } %>
+       
+
+           <!-- For Food Section  -->
+           <% if(category === 'Food'){ %>
+            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2">Food Needy</h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                      <button class="btn btn-sm btn-outline-secondary">Share</button>
+                      <button class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                      <span data-feather="calendar"></span>
+                      This week
+                    </button>
+                  </div>
+                </div>
+      
+                <div class="table-responsive">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Foodmembers</th>
+                        <th>Foodlist</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% docs.forEach(data => { %>
+                          <tr>
+                              <td><%= data._id %></td>
+                              <td><%= data.name %></td>
+                              <td><%= data.mobile %></td>
+                              <td><%= data.age %></td>
+                              <td><%= data.address %></td>
+                              <td><%= data.foodmembers %></td>
+                              <td><%= data.foodlist %></td>
+                            </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </main>
+        <% } %>
+       
+        <!-- For Transport Section  -->
+        <% if(category === 'Transport'){ %>
+            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2">Transport Pass Application</h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                      <button class="btn btn-sm btn-outline-secondary">Share</button>
+                      <button class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                      <span data-feather="calendar"></span>
+                      This week
+                    </button>
+                  </div>
+                </div>
+      
+                <div class="table-responsive">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Month for apply</th>
+                        <th>Type of Mode</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% docs.forEach(data => { %>
+                          <tr>
+                              <td><%= data._id %></td>
+                              <td><%= data.name %></td>
+                              <td><%= data.mobile %></td>
+                              <td><%= data.age %></td>
+                              <td><%= data.address %></td>
+                              <td><%= data.transportMonth %></td>
+                              <td><%= data.transportType %></td>
+                            </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </main>
+        <% } %>
+
+        <!-- For Personal Section  -->
+        <% if(category === 'Personal'){ %>
+            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2">Personal Pass Application</h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                      <button class="btn btn-sm btn-outline-secondary">Share</button>
+                      <button class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                      <span data-feather="calendar"></span>
+                      This week
+                    </button>
+                  </div>
+                </div>
+      
+                <div class="table-responsive">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Month for apply</th>
+                        <th>Type of Mode</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% docs.forEach(data => { %>
+                          <tr>
+                              <td><%= data._id %></td>
+                              <td><%= data.name %></td>
+                              <td><%= data.mobile %></td>
+                              <td><%= data.age %></td>
+                              <td><%= data.address %></td>
+                              <td><%= data.transportMonth %></td>
+                              <td><%= data.transportType %></td>
+                            </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </main>
+        <% } %>
+
+         <!-- For Lab Section  -->
+         <% if(category === 'Lab'){ %>
+            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2">Lab Result Needy</h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                      <button class="btn btn-sm btn-outline-secondary">Share</button>
+                      <button class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                      <span data-feather="calendar"></span>
+                      This week
+                    </button>
+                  </div>
+                </div>
+      
+                <div class="table-responsive">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Month for apply</th>
+                        <th>Type of Mode</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% docs.forEach(data => { %>
+                          <tr>
+                              <td><%= data._id %></td>
+                              <td><%= data.name %></td>
+                              <td><%= data.mobile %></td>
+                              <td><%= data.age %></td>
+                              <td><%= data.address %></td>
+                              <td><%= data.transportMonth %></td>
+                              <td><%= data.transportType %></td>
+                            </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </main>
+        <% } %>
+
+           <!-- For Volunteers Section  -->
+           <% if(category === 'Volunteers'){ %>
+            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                  <h1 class="h2">Volunteers List</h1>
+                  <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                      <button class="btn btn-sm btn-outline-secondary">Share</button>
+                      <button class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                      <span data-feather="calendar"></span>
+                      This week
+                    </button>
+                  </div>
+                </div>
+      
+                <div class="table-responsive">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Gender</th>
+                        <th>BloodGroup</th>
+                        <th>District</th>
+                        <th>State</th>
+                        <th>Address</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% docs.forEach(data => { %>
+                        <% if(data.isVerified && data.isVolunteer) { %>
+                            <tr>
+                                <td><%= data._id %></td>
+                                <td><%= data.name %></td>
+                                <td><%= data.email %></td>
+                                <td><%= data.mobile %></td>
+                                <td><%= data.gender %></td>
+                                <td><%= data.bloodgroup %></td>
+                                <td><%= data.district %></td>
+                                <td><%= data.state %></td>
+                                <td><%= data.address %></td>
+                              </tr>
+                        <% } %>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </main>
+        <% } %>
       </div>
     </div>
 
