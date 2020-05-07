@@ -17,7 +17,7 @@ const FoodSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    isTrue: {
+    isCheck: {
       type: Boolean,
       default: false,
     },

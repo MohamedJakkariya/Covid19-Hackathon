@@ -8,13 +8,13 @@ const Personal = require('../models/Personal'),
 
 exports.insertDataToFood = (req, res) => {
   const { name, mobile, age, currentAddress, foodmembers, foodlist } = req.body;
-    const isTrue = true;
+    const isCheck = true;
     const newData = new Food({
       name,
       mobile,
       age,
       currentAddress,
-      isTrue,
+      isCheck,
       foodmembers,
       foodlist,
     });
@@ -35,13 +35,13 @@ exports.insertDataToFood = (req, res) => {
 exports.insertDataToTransport= (req, res) => {
   const { name, mobile, age, currentAddress, transportMonth, transportType } = req.body;
 
-    const isTrue = true;
+    const isCheck = true;
     const newData = new Transport({
       name,
       mobile,
       age,
       currentAddress,
-      isTrue,
+      isCheck,
       transportMonth,
       transportType
     });
@@ -60,18 +60,18 @@ exports.insertDataToTransport= (req, res) => {
 };
 
 exports.insertDataToSymptoms= (req, res) => {
-  const { name, mobile, age, currentAddress, symptomName, days,tablets,hospitalName } = req.body;
+  const { name, mobile, age, currentAddress, symptomName, days,tablets,hospitalName,hospitalGo } = req.body;
 
-    const isTrue = true;
     const newData = new Symptoms({
       name,
       mobile,
       age,
-      currentAddress,
-      isTrue,
+      address:currentAddress,
       days,
       tablets,
-      hospitalName
+      hospitalName,
+      symptomName,
+      hospitalGo
     });
 
     newData
@@ -90,7 +90,7 @@ exports.insertDataToSymptoms= (req, res) => {
 exports.insertDataToPersonal= (req, res) => {
   const { name, mobile, age, currentAddress,  } = req.body;
 
-    const isTrue = false;
+    const isCheck = false;
     const newData = new Personal({
       name,
       mobile,
@@ -141,7 +141,7 @@ exports.insertDataHospital= (req, res) => {
     }
   }
 
-  const { name, mobile, age, currentAddress,hospinalNname,hospitalAddress  } = req.body;
+  const { name, mobile, age, currentAddress,hospitalName,hospitalAddress  } = req.body;
 
   if(errors.length > 0){
     console.log(errors);
@@ -151,14 +151,15 @@ exports.insertDataHospital= (req, res) => {
       errors
     })
   }else{
-    const isTrue = true;
+    const isCheck = true;
     const newData = new Hospital({
       name,
       mobile,
       age,
       address:currentAddress,
-      hospinalNname,
-      hospitalAddress
+      hospitalName,
+      hospitalAddress,
+      isCheck
     });
 
     newData
@@ -179,13 +180,13 @@ exports.insertDataHospital= (req, res) => {
 exports.insertDataToDoctor= (req, res) => {
   const { name, mobile, age, currentAddress, symptomName, days,tablets,hospitalName } = req.body;
 
-    const isTrue = true;
+    const isCheck = true;
     const newData = new Doctor({
       name,
       mobile,
       age,
       currentAddress,
-      isTrue,
+      isCheck,
       days,
       tablets,
       hospitalName
@@ -208,7 +209,7 @@ exports.insertDataToDoctor= (req, res) => {
 exports.insertDataToLab= (req, res) => {
   const { name, mobile, age, currentAddress,  } = req.body;
 
-    const isTrue = false;
+    const isCheck = false;
     const newData = new Lab({
       name,
       mobile,
@@ -232,7 +233,7 @@ exports.insertDataToLab= (req, res) => {
 exports.setVolunteer = (req, res) => {
     filter = { id: req.body.id };
     update = {
-      isTrue: true,
+      isCheck: true,
     };
 
     // `doc` is the document _before_ `update` was applied
@@ -250,5 +251,30 @@ exports.setVolunteer = (req, res) => {
       req.flash('success_msg', 'Now you\'re volunteer of the community!');
       res.redirect('/user-profile');
     });
+
+};
+
+
+exports.setVolunteer = (req, res) => {
+  filter = { id: req.body.id };
+  update = {
+    isVolunteer: true,
+  };
+
+  // `doc` is the document _before_ `update` was applied
+  Login.findOneAndUpdate(filter, update, { new: true }, (err, doc) => {
+    if (err) {
+      console.log('Something went wrong when the update!');
+      req.flash('error_msg', 'Something went wrong when Updated!');
+      console.log(errors);
+      res.render('apply', {
+        action: 'volunteer',
+        For: 'Apply for Volunteer member',
+      })
+    }
+    console.log(doc);
+    req.flash('success_msg', 'Now you\'re volunteer of the community!');
+    res.redirect('/user-profile');
+  });
 
 };

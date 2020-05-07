@@ -1,3 +1,6 @@
+ // Bootstrap plugin 
+ $('[data-toggle="tooltip"]').tooltip();
+
 var viewStatistics = document.getElementById('view-statistics').getContext('2d');
 var views = new Chart(viewStatistics, {
     type: 'line',

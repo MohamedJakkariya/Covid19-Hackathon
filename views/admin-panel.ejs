@@ -1,25 +1,30 @@
 <%- include('header') %>
-<link rel="stylesheet" href="../css/admin-panel.min.css">
-
-<body class="waitMe_body">
-      <div class="waitMe_container progress" style="background:#fff">
-        <div style="background:#000"></div>
-  
-        <%- include('navbar') %>
-
     <!-- Go to Unverified Profile  -->
-    <div class="unverified-profile" data-placement="right" data-toggle="tooltip" title="Unverified Profile Available!">
-      <span id="close-icon" class="fa fa-exclamation-circle text-danger"></span>
+    <div
+      class="unverified-profile"
+      data-placement="right"
+      data-toggle="tooltip"
+      title="Unverified Profile Available!"
+    >
+      <span id="close-icon" class="fa fa-exclamation-circle text-warning"></span>
     </div>
 
     <!-- Announcemnt Icon  -->
     <form action="#" method="post">
       <div class="announcement">
         <span class="fa fa-close" id="close-announcement"></span>
-        <span class="fa fa-bullhorn" data-placement="right" data-toggle="tooltip" title="Announcemnt" id="announcement"></span>
-        <textarea type="text" id="send-announcement" class="btn btn-primary">Announcement :
-  Enter your message here...
-        </textarea>
+        <span
+          class="fa fa-bullhorn"
+          data-placement="right"
+          data-toggle="tooltip"
+          title="Announcemnt"
+          id="announcement"
+        ></span>
+        <textarea type="text" id="send-announcement" class="btn btn-primary">
+Announcement :
+        Enter your message here...
+              </textarea
+        >
         <button type="submit" id="submit-msg">
           <span class="fa fa-envelope"></span>
         </button>
@@ -28,14 +33,141 @@
 
     <!-- pdf Icon  -->
     <form action="#" method="post">
-      <div class="pdf" data-placement="right" data-toggle="tooltip" title="Generate PDF">
+      <div
+        class="pdf"
+        data-placement="right"
+        data-toggle="tooltip"
+        title="Generate PDF"
+      >
         <span id="close-pdf" class="fa fa-close"></span>
         <span class="fa fa-file-pdf-o" id="pdf"></span>
-        <input type="number" placeholder="Enter the year" id="send" class="btn btn-primary">
+        <input
+          type="number"
+          placeholder="Enter the year"
+          id="send"
+          class="btn btn-primary"
+        />
         <button type="submit" id="submit-pdf">
           <span class="fa fa-send" id="fa-send"></span>
         </button>
       </div>
     </form>
 
+    <div id="admin-nav">
+      <h1>Dashboard</h1>
+      <div class="right">
+        <div class="search"  data-toggle="tooltip" data-placement="bottom" title="Click to view search option">
+          <span class="fa fa-search"></span>
+        </div>
+        <span data-toggle="tooltip" data-placement="bottom" title="All Notification" class="fa fa-bell-o"></span>
+        <span data-toggle="tooltip" data-placement="bottom" title="Email Inbox" class="fa fa-envelope-o"></span>
+        <p  data-toggle="tooltip" data-placement="bottom" title="Click to Logout">
+          <a href="/admin/logout">
+          Logout <span class="fa fa-sign-out"></span>
+          </a>
+        </p>
+      </div>
+    </div>
+    
+
+    <div id="admin-dashboard">
+      <div class="side-panel">
+
+        <div class="profile">
+          <img src="../img/profile2.jpg" alt="">
+        </div>
+        <div class="dropdown">
+          <button
+            type="button"
+            id="toggle-apply"
+            class="btn btn-primary"
+            data-toggle="dropdown"
+          >
+            Apply
+            <span class="fa fa-caret-down"></span>
+          </button>
+          <div id="apply">
+            <a class="dropdown-item" href="#">Symtoms Watcher</a>
+            <a class="dropdown-item" href="#">Food Request</a>
+            <a class="dropdown-item" href="#">Transport Pass Request</a>
+            <a class="dropdown-item" href="#">Personal Pass Request</a>
+            <a class="dropdown-item" href="#">Hospital Admission Request</a>
+            <a class="dropdown-item" href="#">Doctor Appointment Request</a>
+            <a class="dropdown-item" href="#">Lab Result Request</a>
+            <a class="dropdown-item" href="#">Volunteers</a>
+          </div>
+        </div>
+
+        <button class="btn btn-primary">Toll-Free No</button>
+        <button class="btn btn-primary">Fund Information</button>
+        <button class="btn btn-primary">Update Covid Products</button>
+      </div>
+
+      <!-- Main panel  -->
+      <div class="main-panel">
+        <div class="box-container-1">
+          <div class="box">
+            <p><span class="fa fa-user"></span></p>
+            <h3>New User</h3>
+            <p class="mt-2"><%= noOfUsers %></p>
+          </div>
+
+          <div class="box">
+            <p><span class="fa fa-sticky-note"></span></p>
+            <h3>Applications Pending</h3>
+            <p class="mt-2"><%= noOfApplication %></p>
+          </div>
+
+          <div class="box">
+            <p><span class="fa fa-users"></span></p>
+            <h3>Volunteers</h3>
+            <p class="mt-2"><%= noOfVolunteers %></p>
+          </div>
+
+          <div class="box">
+            <p><span class="fa fa-rupee"></span></p>
+            <h3>Fund Help</h3>
+            <p class="mt-2">0</p>
+          </div>
+        </div>
+
+      <div class="box-23">
+        <!-- Box - 2 -->
+        <div class="box-container-2">
+          <div class="box">
+            <p><span class="fa fa-hospital-o"></span></p>
+            <h3>Hospital Admission</h3>
+            <p class="mt-2"><%= noOfHospitalAdmission %></p>
+          </div>
+
+          <div class="box">
+            <p><span class="fa fa-user-md"></span></p>
+            <h3>Doctor Admission</h3>
+            <p class="mt-2"><%= noOfDoctorAdmission %></p>
+          </div>
+
+          <div class="box">
+            <p><span class="fa fa-flask"></span></p>
+            <h3>Lab Results</h3>
+            <p class="mt-2"><%= noOfLabResult %></p>
+          </div>
+
+          <div class="box">
+            <p><span class="fa fa-info"></span></p>
+            <h3>Symptoms Review</h3>
+            <p class="mt-2"><%= noOfSymptoms %></p>
+          </div>
+        </div><!--Box - 2 end-->
+
+        <div class="box-container-3">
+          <canvas id="view-statistics"></canvas>
+        </div><!--Box-3 end-->
+      </div>
+      
+      </div>
+    </div>
+
     <%- include('footer') %>
+    <script src="../js/admin-panel.js"></script>
+  </body>
+  </html>

@@ -18,7 +18,7 @@ const PersonalSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  isTrue: {
+  isCheck: {
     type: Boolean,
     default: false,
   },

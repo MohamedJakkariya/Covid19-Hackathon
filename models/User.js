@@ -3,59 +3,64 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
   fullname: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
-  type : {
-    type: String
+  type: {
+    type: String,
   },
-  gender : {
-    type: String
+  gender: {
+    type: String,
   },
-  dob : {
-    type: Date
+  dob: {
+    type: Date,
   },
-  nationality : {
-    type: String
+  nationality: {
+    type: String,
   },
-  state : {
-    type: String
+  state: {
+    type: String,
   },
-  district : {
-    type: String
+  district: {
+    type: String,
   },
-  education : {
-    type: String
+  education: {
+    type: String,
   },
-  address : {
-    type: String
+  address: {
+    type: String,
   },
-  bloodgroup : {
-    type: String
+  bloodgroup: {
+    type: String,
   },
   resetToken: {
-    type : String,
+    type: String,
   },
-  resetTokenExpire : {
-    type : Date
+  resetTokenExpire: {
+    type: Date,
   },
   isVerified: {
-    type : Boolean,
-    default: false
+    type: Boolean,
+    default: false,
   },
-  isVolunteer: {
-    type : Boolean,
+  isVolunteer:
+    {
+      type: Boolean,
+      default: false,
+    },
+  request: {
+    type: Boolean,
     default: false
   }
 });
