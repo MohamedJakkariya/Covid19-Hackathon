@@ -2,15 +2,15 @@ const manipulationUser = require('../db/manipulation-User');
 const express = require('express'),
   router = express.Router(),
   bcrypt = require('bcryptjs'),
-  passport = require('passport');
+  passport = require('passport'),
   // manipulationAdmin = require('../db/manipulation-Admin'),
   // crypto = require('crypto-random-string');
   // nodemailer = require('nodemailer');
-//   mail = require('../utils/sedingMail'),
-//   { } = require('../config/auth');
+  //   mail = require('../utils/sedingMail'),
+  { ensureAuthenticated } = require('../config/auth');
 
 // Load User model
- User = require('../models/User');
+User = require('../models/User');
 
 // Login Page
 router.get('/signup', (req, res) => res.render('signup'));
@@ -58,7 +58,7 @@ router.post('/signup', (req, res) => {
     nationality,
     state,
     district,
-    address
+    address,
   } = req.body;
   let errors = [];
 
@@ -109,7 +109,7 @@ router.post('/signup', (req, res) => {
           state,
           district,
           address,
-          type
+          type,
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -121,7 +121,7 @@ router.post('/signup', (req, res) => {
               .then((user) => {
                 // Profile submit to verification
                 // mail.informToAdmin(newUser.email);
-                
+
                 req.flash(
                   'success_msg',
                   'Your profile is created and submitted to admin for verification! \n Go to Login...'
@@ -137,7 +137,7 @@ router.post('/signup', (req, res) => {
   }
 });
 
-// Login route 
+// Login route
 router.get('/login', (req, res) =>
   res.render('login', {
     action: '/user/login',
@@ -153,122 +153,113 @@ router.post('/login', (req, res, next) => {
     failureFlash: true,
   })(req, res, next);
 });
- 
+
 router.get('/logout', (req, res) => {
   req.logout();
   req.flash('success_msg', 'You are logged out');
   res.redirect('/user/login');
-})
+});
 
 // Apply stuff GET route
 router.get('/sympotoms', (req, res) =>
   res.render('apply', {
     action: 'sympotoms',
-    For: 'Inform for symptoms'
+    For: 'Inform for symptoms',
   })
 );
 
 router.get('/food', (req, res) =>
   res.render('apply', {
     action: 'food',
-    For: 'Apply for food'
+    For: 'Apply for food',
   })
 );
 
 router.get('/transport', (req, res) =>
   res.render('apply', {
     action: 'transport',
-    For: 'Apply for Transport Pass'
+    For: 'Apply for Transport Pass',
   })
 );
 
 router.get('/personal', (req, res) =>
   res.render('apply', {
     action: 'personal',
-    For: 'Apply for Personal Pass'
+    For: 'Apply for Personal Pass',
   })
 );
 
 router.get('/hospital', (req, res) =>
   res.render('apply', {
     action: 'hospital',
-    For: 'Apply for hospital admission'
+    For: 'Apply for hospital admission',
   })
 );
 
 router.get('/doctor', (req, res) =>
   res.render('apply', {
     action: 'doctor',
-    For: 'Apply for doctor appointment'
+    For: 'Apply for doctor appointment',
   })
 );
 
 router.get('/lab', (req, res) =>
   res.render('apply', {
     action: 'lab',
-    For: 'Apply for lab result'
+    For: 'Apply for lab result',
   })
 );
 
 router.get('/volunteer', (req, res) =>
   res.render('apply', {
     action: 'volunteer',
-    For: 'Apply for volunteer member'
+    For: 'Apply for volunteer member',
   })
 );
-
 
 // Apply stuff POST route
 router.post('/sympotoms', (req, res) => {
   console.log(req.body);
   manipulationUser.insertDataToSymptoms(req, res);
-  }
-);
+});
 
-router.post('/food', (req, res) =>{
+router.post('/food', (req, res) => {
   console.log(req.body);
   manipulationUser.insertDataToFood(req, res);
-  }
-);
+});
 
-router.post('/transport', (req, res) =>{
+router.post('/transport', (req, res) => {
   console.log(req.body);
   manipulationUser.insertDataToTransport(req, res);
-  }
-);
+});
 
-router.post('/personal', (req, res) =>{
+router.post('/personal', (req, res) => {
   console.log(req.body);
   manipulationUser.insertDataToPersonal(req, res);
-  }
-);
+});
 
-router.post('/hospital', (req, res) =>{
+router.post('/hospital', (req, res) => {
   console.log(req.body);
   manipulationUser.insertDataHospital(req, res);
-  }
-);
+});
 
-router.post('/doctor', (req, res) =>{
+router.post('/doctor', (req, res) => {
   console.log(req.body);
   manipulationUser.insertDataToSymptoms(req, res);
-  }
-);
+});
 
-router.post('/lab', (req, res) =>{
+router.post('/lab', (req, res) => {
   console.log(req.body);
   manipulationUser.insertDataToLab(req, res);
-  }
-);
+});
 
-router.post('/volunteer', (req, res) =>{
+router.post('/volunteer', (req, res) => {
   console.log(req.body.volunteer);
-  if(req.body.volunteer === 'false'){
-        req.flash('error_msg', 'Not appreciated answer!');
-        res.redirect('/user-profile')
-  }else{
+  if (req.body.volunteer === 'false') {
+    req.flash('error_msg', 'Not appreciated answer!');
+    res.redirect('/user-profile');
+  } else {
     manipulationUser.setVolunteer(req, res);
   }
-  }
-);
+});
 module.exports = router;

@@ -41,3 +41,11 @@
     });
   })
   .catch((err) => console.log(err));
+
+  // <div class="view-box">
+  //         <h1>Sympotom Application</h1>
+  //         <img src="../img/icon.jpg" alt="">
+  //         <p>Total application <span>10292</span></p>
+  //         <p>Current application <span>10</span></p>
+  //         <button class="btn">View</button>
+  //       </div>

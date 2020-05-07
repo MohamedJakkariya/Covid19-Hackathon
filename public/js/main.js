@@ -65,132 +65,145 @@ function closeNav() {
   document.querySelector('#header').style.backgroundColor = '#fc4036';
 }
 
-
-// Fix the cors policy mechanism 
+// Fix the cors policy mechanism
 // https://cors-anywhere.herokuapp.com/
 // Get Api Data
 const URL = 'https://cors-anywhere.herokuapp.com/https://covid19api.io/api/v1/';
 
 function getCountryReport() {
-    console.log($('#country').find(":selected").text());
-    let currentCountry =  $('#country').find(":selected").text();
-    
+  // Set animation when fetching the data
+  $('#statistics').waitMe({
+    effect: 'bounce',
+    text: 'Wait couple seconds..',
+    bg: 'rgba(255,255,255,0.7)',
+    color: '#000',
+    maxSize: '',
+    waitTime: -1,
+    textPos: 'vertical',
+    fontSize: '',
+    source: '',
+    onClose: function () {},
+  });
+
+  console.log($('#country').find(':selected').text());
+  let currentCountry = $('#country').find(':selected').text();
+
   fetch(`${URL}/AllReports`)
     .then((res) => res.json())
     .then((data) => {
-        data.reports[0].table.forEach((arr) => {
-            arr.forEach((country) => {
-              if (country.Country === currentCountry) {
-                $('#active').html(country.ActiveCases);
-                $('#recovered').html(country.TotalRecovered);
-                $('#confirmed').html(country.TotalCases);
-                $('#deaths').html(country.TotalDeaths);
-                console.log(country.TotalCases);
-                 return
-              }
-           });
-    
-          });
+      data.reports[0].table.forEach((arr) => {
+        arr.forEach((country) => {
+          if (country.Country === currentCountry) {
+            $('#active').html(country.ActiveCases);
+            $('#recovered').html(country.TotalRecovered);
+            $('#confirmed').html(country.TotalCases);
+            $('#deaths').html(country.TotalDeaths);
+            console.log(country.TotalCases);
+            $('#statistics').waitMe('hide');
+            return;
+          }
+        });
+      });
     })
     .catch((err) => console.log(err));
 }
 
-
-// Get init report 
+// Get init report
 getCountryReport();
 
-
-// Generate Chart 
+// Generate Chart
 var ctx = document.getElementById('chart').getContext('2d');
 
-// Store all states 
+// Store all states
 let state = [],
-    active = [],
-    recovered = [],
-    deaths = [],
-    confirmed = [];
+  active = [],
+  recovered = [],
+  deaths = [],
+  confirmed = [];
 
-function showGraph(choice){
+function showGraph(choice) {
+  new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line', //bar, radar, pie, doughnut
 
-    new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line', //bar, radar, pie, doughnut
-    
-        // The data for our dataset
-        data: {
-            labels: state,
-            datasets: [{
-                label: `Currenty in India ${choice}`,
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: getData(choice)
-            }]
+    // The data for our dataset
+    data: {
+      labels: state,
+      datasets: [
+        {
+          label: `Currenty in India ${choice}`,
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: getData(choice),
         },
-    
-        // Configuration options go here
-        options: {
-            layout: {
-                padding: {
-                    left: 0,
-                    right: 10,
-                    top: 0,
-                    bottom: 0
-                }
-            },
-            easing : 'easeInBounce',
-            duration: 100,
-            scales: {
-                xAxes: [{
-                    barPercentage: 0.4
-                }]
-            }
-        }
-    });
+      ],
+    },
+
+    // Configuration options go here
+    options: {
+      layout: {
+        padding: {
+          left: 0,
+          right: 10,
+          top: 0,
+          bottom: 0,
+        },
+      },
+      easing: 'easeInBounce',
+      duration: 100,
+      scales: {
+        xAxes: [
+          {
+            barPercentage: 0.4,
+          },
+        ],
+      },
+    },
+  });
 }
 
-
-// Initialy load a graph 
-function initGraph(){
-    fetch(`${URL}/IndiaCasesByStates`)
+// Initialy load a graph
+function initGraph() {
+  fetch(`${URL}/IndiaCasesByStates`)
     .then((res) => res.json())
     .then((data) => {
-        for(let i = 1; i < data.data[0].table.length; i++){
-            console.log(data.data[0].table[i].active);
-            
-            state.push(data.data[0].table[i].state);
-            active.push(data.data[0].table[i].active);
-            recovered.push(data.data[0].table[i].recovered);
-            confirmed.push(data.data[0].table[i].confirmed);
-            deaths.push(data.data[0].table[i].deaths);
-        }
+      for (let i = 1; i < data.data[0].table.length; i++) {
+        console.log(data.data[0].table[i].active);
 
-        // Init Graph show 
-        showGraph('active');
+        state.push(data.data[0].table[i].state);
+        active.push(data.data[0].table[i].active);
+        recovered.push(data.data[0].table[i].recovered);
+        confirmed.push(data.data[0].table[i].confirmed);
+        deaths.push(data.data[0].table[i].deaths);
+      }
+
+      // Init Graph show
+      showGraph('active');
     })
     .catch((err) => console.log(err));
 }
 
-// Initialize the graph 
-initGraph()
+// Initialize the graph
+initGraph();
 
 const getData = (choice) => {
-    switch(choice){
-        case 'recovered':
-            return recovered;
-        case 'confirmed':
-            return confirmed;
-        case 'deaths':
-            return deaths;
-        default:
-            return active;
-    }
-}
+  switch (choice) {
+    case 'recovered':
+      return recovered;
+    case 'confirmed':
+      return confirmed;
+    case 'deaths':
+      return deaths;
+    default:
+      return active;
+  }
+};
 
 $(document).ready(() => {
-    $('#toggle-apply').click(() => {
-        $('#apply').fadeToggle('slow');
-    });
-    $('#toggle-location').click(() => {
-        $('#location').fadeToggle('slow');
-    });
+  $('#toggle-apply').click(() => {
+    $('#apply').fadeToggle('slow');
+  });
+  $('#toggle-location').click(() => {
+    $('#location').fadeToggle('slow');
+  });
 });
