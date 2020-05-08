@@ -160,11 +160,65 @@ Announcement :
         </div><!--Box - 2 end-->
 
         <div class="box-container-3">
-          <canvas id="view-statistics"></canvas>
-        </div><!--Box-3 end-->
-      </div>
+
+        </div>
+      </div><!--End of box 23-->
       
-      </div>
+        <div class="chart-analysis mt-4">
+          <div class="chart">
+            <div class="option row">
+              <div class="form-group col-md-2">
+                <select class="form-control" id="options">
+                  <option value="line">Line</option>
+                  <option value="bar">Bar</option>
+                  <option value="pie">Pie</option>
+                  <option value="polarArea">Polar Area</option>
+                  <option value="radar">Radar</option>
+                  <option value="doughnut">Doughnut</option>
+                </select>
+              </div>
+              <div class="radio-group col-sm-2 py-2 text-center">
+                <input type="radio" id="primary" checked id="a-select" class="checkmark" onclick="showGraph('active')" name="option">
+                <label for="a-select">
+                  <div class="check"></div>
+                  Active
+                </label>
+              </div>
+
+            <div class="radio-group col-sm-2 py-2 text-center">
+              <input type="radio" id="c-select" class="checkmark" onclick="showGraph('confirmed')" name="option">            
+              <label for="c-select">
+                <div class="check"></div>
+                Confirmed
+              </label>
+              </div>
+
+              <div class="radio-group col-sm-2 py-2 text-center">
+                <input type="radio" id="d-select" class="checkmark" onclick="showGraph('deaths')" name="option">        
+                <label for="d-select">
+                  <div class="check"></div>
+                  Deaths
+                </label>
+              </div>
+              <div class="radio-group col-sm-2 py-2 text-center">
+                <input type="radio" id="r-select" class="checkmark" onclick="showGraph('recovered')" name="option">        
+                <label for="r-select">
+                  <div class="check"></div>
+                  Recovered
+                </label>
+              </div>
+              <div class="radio-group col-sm-2 py-2 text-center">
+                <input type="radio" id="r-select" class="checkmark" onclick="showGraph('all')" name="option">        
+                <label for="r-select">
+                  <div class="check"></div>
+                  All
+                </label>
+              </div>
+          </div>
+          <canvas id="india-chart"></canvas>
+        </div>        
+      </div><!--Box-3 end-->
+      </>
     </div>
 
     <%- include('footer') %>
