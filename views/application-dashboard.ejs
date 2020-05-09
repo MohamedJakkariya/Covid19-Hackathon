@@ -6,7 +6,7 @@
 
         <!-- For Symptoms Section  -->
         <% if(category === 'Symptoms'){ %>
-            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+            <main role="main" class="main col-md-11 mx-auto ml-sm-auto col-lg-10">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                   <h1 class="h2">Symptoms Analytics</h1>
                   <div class="btn-toolbar mb-2 mb-md-0">
@@ -63,7 +63,7 @@
 
         <!-- For Hospital section Section  -->
         <% if(category === 'Hospital'){ %>
-            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+            <main role="main" class="main col-md-11 mx-auto ml-sm-auto col-lg-10">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                   <h1 class="h2">Hospital Admission</h1>
                   <div class="btn-toolbar mb-2 mb-md-0">
@@ -113,7 +113,7 @@
 
            <!-- For Symptoms Section  -->
            <% if(category === 'Doctor'){ %>
-            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+            <main role="main" class="main col-md-11 mx-auto ml-sm-auto col-lg-10">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                   <h1 class="h2">Doctor Appointment</h1>
                   <div class="btn-toolbar mb-2 mb-md-0">
@@ -170,7 +170,7 @@
 
            <!-- For Food Section  -->
            <% if(category === 'Food'){ %>
-            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+            <main role="main" class="main col-md-11 mx-auto ml-sm-auto col-lg-10">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                   <h1 class="h2">Food Needy</h1>
                   <div class="btn-toolbar mb-2 mb-md-0">
@@ -220,7 +220,7 @@
        
         <!-- For Transport Section  -->
         <% if(category === 'Transport'){ %>
-            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+            <main role="main" class="main col-md-11 mx-auto ml-sm-auto col-lg-10">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                   <h1 class="h2">Transport Pass Application</h1>
                   <div class="btn-toolbar mb-2 mb-md-0">
@@ -270,7 +270,7 @@
 
         <!-- For Personal Section  -->
         <% if(category === 'Personal'){ %>
-            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+            <main role="main" class="main col-md-11 mx-auto ml-sm-auto col-lg-10">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                   <h1 class="h2">Personal Pass Application</h1>
                   <div class="btn-toolbar mb-2 mb-md-0">
@@ -320,7 +320,7 @@
 
          <!-- For Lab Section  -->
          <% if(category === 'Lab'){ %>
-            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+            <main role="main" class="main col-md-11 mx-auto ml-sm-auto col-lg-10">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                   <h1 class="h2">Lab Result Needy</h1>
                   <div class="btn-toolbar mb-2 mb-md-0">
@@ -370,7 +370,7 @@
 
            <!-- For Volunteers Section  -->
            <% if(category === 'Volunteers'){ %>
-            <main role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+            <main role="main" class="main col-md-11 mx-auto ml-sm-auto col-lg-10">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                   <h1 class="h2">Volunteers List</h1>
                   <div class="btn-toolbar mb-2 mb-md-0">
@@ -426,7 +426,7 @@
 
         <!-- For Volunteers Section  -->
         <% if(category === 'Unverified'){ %>
-        <main id="main" role="main" class="col-md-11 mx-auto ml-sm-auto col-lg-10">
+        <main role="main" class="main col-md-11 mx-auto ml-sm-auto col-lg-10">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h1 class="h2">Unverified Profiles</h1>
               <div class="btn-toolbar mb-2 mb-md-0">
@@ -468,8 +468,8 @@
                             <td><%= data.state %></td>
                             <td><%= data.address %></td>
                             <td class="action">
-                              <a class="verify btn btn-success text-white"  role="button" onclick="setVerified('<%= data._id %>')">Verify</a>
-                              <a class="reject btn btn-danger text-white" role="button" onclick="setUnverified('<%= data._id %>')">Reject</a>
+                              <a class="verify btn btn-success text-white"  role="button" onclick="setAction('<%= data._id %>', 'setVerified')">Verify</a>
+                              <a class="reject btn btn-danger text-white" role="button" onclick="setUnverified('<%= data._id %>', 'setUnverified')">Reject</a>
                             </td>
                           </tr>
                     <% } %>
@@ -479,6 +479,51 @@
             </div>
           </main>
     <% } %>
+
+        <!-- Toll number list  -->
+        <% if(category === 'TollList'){ %>
+          <main id="main" role="main" class="main col-md-11 mx-auto ml-sm-auto col-lg-10">
+              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Free Toll Numbers</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                  <div class="btn-group mr-2">
+  <a href="/dashboard" class="btn btn-sm btn-outline-secondary px-5">Back</a>
+                    <button class="btn btn-sm btn-outline-secondary">Share</button>
+                    <button class="btn btn-sm btn-outline-secondary">Export</button>
+                  </div>
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                    <span data-feather="calendar"></span>
+                    By State
+                  </button>
+                </div>
+              </div>
+    
+              <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                  <thead>
+                    <tr>
+                      <th>State</th>
+                      <th>Name</th>
+                      <th>Number</th>
+                      <th class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% docs.forEach(data => { %>
+                          <tr>
+                              <td><%= data.state %></td>
+                              <td><%= data.name %></td>
+                              <td><%= data.number %></td>
+                              <td class="action">
+                                <a class="reject btn btn-danger text-white" role="button" onclick="setAction('<%= data._id %>','removeToll')">Remove</a>
+                              </td>
+                            </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </main>
+      <% } %>
       </div>
     </div>
 
@@ -525,6 +570,28 @@
         </div>
       </div>
     </div>
+
+        <!--Intimation for success Modal -->
+        <div class="modal fade" id="pop-removed" tabindex="-1" role="dialog" aria-labelledby="pop-removedTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-success" id="exampleModalLongTitle">Success</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>
+                  Successfully the num is removed !
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+              </div>
+            </div>
+          </div>
+        </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

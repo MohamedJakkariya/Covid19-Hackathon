@@ -115,13 +115,13 @@ Announcement :
           </div>
         </div>
 
-        <button class="btn btn-primary">Toll-Free No</button>
+        <button class="btn btn-primary" id="show-toll-form">Toll-Free No</button>
         <button class="btn btn-primary">Fund Information</button>
         <button class="btn btn-primary">Update Covid Products</button>
       </div>
 
       <!-- Main panel  -->
-      <div class="main-panel">
+      <!-- <div class="main-panel">
         <div class="box-container-1">
           <div class="box">
             <p><span class="fa fa-user"></span></p>
@@ -149,7 +149,6 @@ Announcement :
         </div>
 
       <div class="box-23">
-        <!-- Box - 2 -->
         <div class="box-container-2">
           <div class="box">
             <p><span class="fa fa-hospital-o"></span></p>
@@ -174,9 +173,9 @@ Announcement :
             <h3>Intimation</h3>
             <p class="mt-2">23</p>
           </div>
-        </div><!--Box - 2 end-->
+        </div>-Box - 2 end-->
 
-        <div class="box-container-3">
+        <!-- <div class="box-container-3">
           <div class="chart">
             <div class="option row">
               <div class="form-group col-sm-2">
@@ -229,14 +228,39 @@ Announcement :
           </div>
           <canvas id="india-chart"></canvas>
         </div>
-        </div><!--Box-3 end-->
-      </div>
+        </div>Box-3 end -->
+      <!-- </div> -->
       
-      <div id="chart-analysisi">
-        
+      <!-- <div id="chart-analysis"></div> -->
+         
+      <div id="toll-add">
+        <div class="heading">
+          <h2 class="text-secondary">Adding Toll Number</h2>
+          <button class="btn btn-outline-dark close-toll">&times;</button>
+        </div>
+        <form action="#" id="toll-form">
+          <div class="form-group">
+            <label for="name" class="text-secondary">Source</label>
+            <input required="required" type="text" class="form-control" name="name" id="name">
+          </div>
+          <div class="form-group">
+            <label for="number" class="text-secondary">Number</label>
+            <input required="required" type="number" class="form-control" name="number" id="number">
+          </div>
+          <div class="btn-group">
+            <a href="#" class="btn btn-outline-primary">View all</a>
+            <button class="btn btn-outline-dark">Add</button>
+            <span class="success fa fa-check-circle text-success"></span>
+          </div>
+        </form>
       </div>
+
+   
+  
       </div>
     </div>
+
+   
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="../lib/jquery/jquery.min.js"></script>

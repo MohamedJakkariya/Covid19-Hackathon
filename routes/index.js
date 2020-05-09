@@ -2,19 +2,18 @@ const express = require('express');
 
 const router = express.Router(),
   manipulationforAdmin = require('../db/manipulation-Admin'),
+  manipulationforUser = require('../db/manipulation-User'),
   { ensureAuthenticated } = require('../config/auth');
+
 
 // Welcome Page
 router.get('/', (req, res) => res.render('index'));
-router.get('/dashboard', ensureAuthenticated, (req, res) => {
+router.get('/dashboard', (req, res) => {
   manipulationforAdmin.getStatistics(req, res, 'admin-panel');
 });
-router.get('/user-profile', ensureAuthenticated, (req, res) =>
-  res.render('user-panel', {
-    Id: req.user._id,
-    profile: req.user.profile,
-  })
-);
+router.get('/user-profile', ensureAuthenticated, (req, res) => {
+  manipulationforUser.getTollList(req, res);
+});
 
 // For push notification
 webpush = require('web-push');

@@ -217,6 +217,18 @@ $(document).ready(() => {
       onClose : function() {}
       });
   });
+
+  $('#show-num').on('click', () => {
+    $('#toll-free').animate({
+      left: '0rem'
+    }, 'slow');
+  });
+
+  $('.close').on('click', () => {
+    $('#toll-free').animate({
+      left: '-30rem'
+    }, 'slow');
+  });
 });
 
 

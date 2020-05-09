@@ -5,6 +5,7 @@ const Personal = require('../models/Personal'),
   Hospital = require('../models/Hospital'),
   Transport = require('../models/Transport'),
   Doctor = require('../models/Doctor'),
+  Toll = require('../models/Toll'),
   User = require('../models/User');
 
 exports.insertDataToFood = (req, res) => {
@@ -290,3 +291,15 @@ exports.setVolunteer = (req, res) => {
       }
     });
 };
+
+exports.getTollList = (req, res) => {
+  Toll.find({}, (err, docs) => {
+    if(err) console.log(err);
+    
+    res.render('user-panel', {
+      Id: req.user._id,
+      profile: req.user.profile,
+      numberlist: docs
+    });
+  });
+}

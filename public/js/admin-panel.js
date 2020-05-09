@@ -278,6 +278,82 @@ $(document).ready(() => {
 
     showGraph(mode);
   });
+
+  // For toll form 
+  $('#show-toll-form').on('click', () => {
+    $('#toll-add').animate({
+      left: '0rem'
+    }, 'slow');
+  });
+
+  $('.close-toll').on('click', () => {
+    $('#toll-add').animate({
+      left: '-27rem'
+    }, 'slow');
+
+    //hide all indicators 
+    $('.success').css('display', 'none');
+    $('.override').css('display', 'none');
+    $('.error').css('display', 'none');
+  });
+
+  // Toll free numbers 
+  $('#toll-form').on('submit', (e) => {
+    e.preventDefault();
+
+    $('.success').css('display', 'none');
+
+    // waiting animation 
+    $('#submit').waitMe({
+      effect : 'bouncePulse',
+      text : '',
+      bg : 'rgba(255,255,255,0.7)',
+      color : '#000',
+      maxSize : '',
+      waitTime : -1,
+      textPos : 'vertical',
+      fontSize : '',
+      source : '',
+      maxSize : 30,
+      onClose : function() {}
+      });
+
+    const name = $('#name');
+    const number = $('#number');
+    const state = $('#state');
+
+    postData('/admin/toll-add', {
+      name: name.val(),
+      number: number.val(),
+      state: state.val()
+    }).then((data) => {
+      switch(data){
+        case 'added':
+            name.val('');
+            number.val('');
+            state.val('Select a state');
+            $('#submit').waitMe('hide');
+            $('.override').css('display', 'none');
+            $('.error').css('display', 'none');
+            $('.success').css('display', 'unset');
+          break;
+        case 'override':
+            $('#submit').waitMe('hide');
+            $('.success').css('display', 'none');
+            $('.error').css('display', 'none');
+            $('.override').css('display', 'unset');
+          break;
+        case 'error':
+          $('#submit').waitMe('hide');
+          $('.success').css('display', 'none');
+          $('.override').css('display', 'none');
+          $('.error').css('display', 'unset');
+          break;
+        default:
+      }
+    });
+
+  });
 });
 
 const getTotal = () => {
@@ -302,3 +378,23 @@ const sumArr = (arr) => {
 
 //Initialize the graph 
 initGraph();
+
+// TOll free number adding operation 
+// Post fetch api  method
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(data),
+  });
+  return response.json();
+}

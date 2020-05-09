@@ -13,6 +13,7 @@ passport = require('passport'),
   Hospital = require('../models/Hospital'),
   Transport = require('../models/Transport'),
   Doctor = require('../models/Doctor'),
+  Toll = require('../models/Toll'),
   User = require('../models/User');
 
 // Sign up Page
@@ -162,6 +163,20 @@ router.get('/set-verified/:id', (req, res) => {
   manipulationAdmin.setVerified(req, res);
 });
 
+
+// Toll view and add route 
+router.get('/toll-list', (req, res) => {
+  manipulationAdmin.getResults(res, Toll, 'application-dashboard', 'TollList');
+});
+
+router.post('/toll-add', (req, res) => {
+  manipulationAdmin.insertNumToToll(req, res);
+})
+
+router.get('/remove-toll/:id', (req, res) => {
+  console.log(req.params.id);
+  manipulationAdmin.removeById(req.params.id, res);
+})
 
 
 

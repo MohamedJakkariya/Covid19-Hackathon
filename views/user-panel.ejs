@@ -40,11 +40,36 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary">Toll-Free No</button>
+            <button class="btn btn-primary" id="show-num">Toll-Free No</button>
             <button class="btn btn-primary">Give Fund</button>
             <button class="btn btn-primary">Covid Products</button>
           </div>
 
+          <!-- Toll free numbers  -->
+          
+            <div id="toll-free">
+              <div class="heading">
+                  <h2>Contact</h2>
+                  <button class="close">&times;</button>
+              </div>
+              <!-- State  -->
+            <div class="form-group">
+              <select id="state" onchange='selct_district(this.value)' name="state" 
+                class="custom-select">
+              </select>
+            </div>
+
+            <% numberlist.forEach(data => { %>
+              <div class="number important">
+                <h3><%= data.name %></h3>
+                <a href="tel:+<%= data.number %>">
+                    <span class="fa fa-phone"></span>
+                    <%= data.number %> 
+                </a>
+            </div>
+            <% }) %>
+            
+        </div>
           <!-- Main panel  -->
           <div class="main-panel">
             <%- include('partials/messages') %>
@@ -317,5 +342,6 @@
       </div>
 <%- include('footer') %>
     <script src="../js/main.js"></script>
+    <script src="../js/state.js"></script>
   </body>
 </html>

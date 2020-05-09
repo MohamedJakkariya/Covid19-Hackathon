@@ -5,6 +5,7 @@ const Personal = require('../models/Personal'),
   Hospital = require('../models/Hospital'),
   Transport = require('../models/Transport'),
   Doctor = require('../models/Doctor'),
+  Toll = require('../models/Toll'),
   User = require('../models/User'),
   mail = require('../utils/sedingMail');
 
@@ -125,3 +126,43 @@ exports.setVerified = (req, res) => {
     }
   );
 };
+
+
+exports.insertNumToToll= (req, res) => {
+  const { name, number, state} = req.body;
+
+  // Check the num already exist or not 
+  Toll.find({"number": number},{number, name}, (err, docs) => {
+    if(err) console.log(err);
+    
+    if(docs.length){
+      res.send(JSON.stringify('override'));
+    }else{
+      const newNum = new Toll({
+        name,
+        number,
+        state
+      });
+  
+      newNum
+        .save()
+        .then((num) => {
+          res.send(JSON.stringify('added'));
+        })
+        .catch((err) => {
+          console.log(err);
+          res.send(JSON.stringify('error'));
+        });
+    }
+  });
+};
+
+// Remove by id 
+exports.removeById = (id, res) => {
+  // Delete the document
+  Toll.findByIdAndRemove(id, (err, doc) => {
+    if (err) throw err;
+    res.send(JSON.stringify('removed'));
+  });
+} 
+

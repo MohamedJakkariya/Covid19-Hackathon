@@ -58,6 +58,53 @@ Announcement :
       </div>
     </form>
 
+    <!-- Toll form  -->
+    <div id="toll-add">
+      <div class="heading">
+        <h2 class="text-secondary">Adding Toll Number</h2>
+        <button type="button" class="btn btn-outline-dark close-toll">&times;</button>
+      </div>
+      <form id="toll-form">
+        <div class="form-group">
+          <label for="name" class="text-secondary">Source</label>
+          <input type="text" required="required" class="form-control" name="name" id="name">
+        </div>
+
+        <!-- State  -->
+        <div class="form-group">
+          <label for="state">State</label>
+          <select id="state" onchange='selct_district(this.value)' name="state" 
+            class="custom-select">
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="number" class="text-secondary">Number</label>
+          <input type="text" required="required" class="form-control" name="number" id="number">
+        </div>
+        <div class="btn-group">
+          <a href="/admin/toll-list" class="btn btn-outline-primary">View all</a>
+          <button type="submit" id="submit" class="btn btn-outline-dark">Add</button>
+          <span 
+          class="success fa fa-check-circle text-success"
+          data-placement="right"
+          data-toggle="tooltip"
+          title="Successfully Added"></span>
+          <span 
+          class="override fa fa-exclamation-circle text-warning" 
+          data-placement="right"
+          data-toggle="tooltip"
+          title="Already the number is exist"></span>
+          <span 
+          class="error fa fa-times-circle text-danger"
+          data-placement="right"
+          data-toggle="tooltip"
+          title="Something went wrong! like network connection"></span>
+        </div>
+      </form>
+    </div>
+
+
     <div id="admin-nav">
       <h1>Dashboard</h1>
       <div class="right">
@@ -103,7 +150,7 @@ Announcement :
           </div>
         </div>
 
-        <button class="btn btn-primary">Toll-Free No</button>
+        <button class="btn btn-primary" id="show-toll-form">Add Toll-Free numbers</button>
         <button class="btn btn-primary">Fund Information</button>
         <button class="btn btn-primary">Update Covid Products</button>
       </div>
@@ -228,5 +275,6 @@ Announcement :
 
     <%- include('footer') %>
     <script src="../js/admin-panel.js"></script>
+    <script src="../js/state.js"></script>
   </body>
   </html>
