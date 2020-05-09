@@ -5,7 +5,8 @@ const Personal = require('../models/Personal'),
   Hospital = require('../models/Hospital'),
   Transport = require('../models/Transport'),
   Doctor = require('../models/Doctor'),
-  User = require('../models/User');
+  User = require('../models/User'),
+  mail = require('../utils/sedingMail');
 
 exports.getStatistics = async (req, res, route) => {
   let noOfUsers = 0,
@@ -26,12 +27,11 @@ exports.getStatistics = async (req, res, route) => {
     });
   });
 
-//   Finding User calculation 
+  //   Finding User calculation
   await User.find({}, 'id isVerified isVolunteer', async (err, docs) => {
     if (err) throw err;
 
     await docs.forEach((doc) => {
-        
       if (!doc.isVerified) {
         noOfUsers++;
       }
@@ -41,7 +41,7 @@ exports.getStatistics = async (req, res, route) => {
     });
   });
 
-//   Finding Doctor need calculation 
+  //   Finding Doctor need calculation
   await Doctor.find({}, 'id isCheck', async (err, docs) => {
     if (err) throw err;
 
@@ -52,7 +52,7 @@ exports.getStatistics = async (req, res, route) => {
     });
   });
 
-//   Finding lab report calculation 
+  //   Finding lab report calculation
   await Lab.find({}, 'id isCheck', async (err, docs) => {
     if (err) throw err;
 
@@ -62,13 +62,13 @@ exports.getStatistics = async (req, res, route) => {
       }
     });
   });
-  
-//   Finding Symptoms calculation 
+
+  //   Finding Symptoms calculation
   await Symptoms.find({}, 'id isCheck', async (err, docs) => {
     if (err) throw err;
 
     console.log(docs);
-    
+
     await docs.forEach((doc) => {
       if (!doc.isCheck) {
         noOfSymptoms++;
@@ -76,7 +76,8 @@ exports.getStatistics = async (req, res, route) => {
     });
   });
 
-  noOfApplication = noOfHospitalAdmission + noOfDoctorAdmission + noOfLabResult + noOfSymptoms;
+  noOfApplication =
+    noOfHospitalAdmission + noOfDoctorAdmission + noOfLabResult + noOfSymptoms;
 
   await res.render(route, {
     noOfHospitalAdmission,
@@ -85,21 +86,42 @@ exports.getStatistics = async (req, res, route) => {
     noOfVolunteers,
     noOfDoctorAdmission,
     noOfLabResult,
-    noOfSymptoms
+    noOfSymptoms,
   });
 };
 
-
 exports.getResults = (res, Class, route, nameOfSection) => {
-    //   Finding Symptoms calculation 
+  //   Finding Symptoms calculation
   Class.find({}, (err, docs) => {
     if (err) throw err;
 
     console.log(docs);
-    
+
     res.render(route, {
-        docs,
-        category: nameOfSection
+      docs,
+      category: nameOfSection,
     });
   });
-}
+};
+
+exports.setVerified = (req, res) => {
+  // `doc` is the document _before_ `update` was applied
+
+  User.findOneAndUpdate(
+    req.params.id,
+    { isVerified: true, new: true },
+    (err, doc) => {
+      if (err) {
+        res.send(JSON.stringify('error'));
+      }
+      console.log(doc.email);
+      // Profile Verified notification
+      mail.informToUser(
+        doc.email,
+        'Your account was successfully verified and now you can access volunteer request and all those features! Thank you for member of our community to help others.'
+      );
+
+      res.send(JSON.stringify('verified'));
+    }
+  );
+};

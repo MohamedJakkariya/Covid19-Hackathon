@@ -62,6 +62,18 @@ const UserSchema = new mongoose.Schema({
   request: {
     type: Boolean,
     default: false
+  },
+  aadhar: {
+    type: Number,
+    required: true
+  },
+  mobile: {
+    type: Number,
+    required: true
+  },
+  profile: {
+    type: String,
+    default: 'modal-profile.jpg'
   }
 });
 

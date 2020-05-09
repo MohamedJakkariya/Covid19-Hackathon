@@ -6,7 +6,7 @@ const express = require('express'),
   // manipulationAdmin = require('../db/manipulation-Admin'),
   // crypto = require('crypto-random-string');
   // nodemailer = require('nodemailer');
-  //   mail = require('../utils/sedingMail'),
+    mail = require('../utils/sedingMail'),
   { ensureAuthenticated } = require('../config/auth');
 
 // Load User model
@@ -18,7 +18,7 @@ router.get('/signup', (req, res) => res.render('signup'));
 // Register
 router.post('/signup', (req, res) => {
   let file;
-  let profile;
+  let profileName;
   console.log(req.body);
   if (req.files != null) {
     file = req.files.profile_img;
@@ -59,6 +59,7 @@ router.post('/signup', (req, res) => {
     state,
     district,
     address,
+    aadhar
   } = req.body;
   let errors = [];
 
@@ -110,6 +111,8 @@ router.post('/signup', (req, res) => {
           district,
           address,
           type,
+          aadhar,
+          profile
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -120,7 +123,7 @@ router.post('/signup', (req, res) => {
               .save()
               .then((user) => {
                 // Profile submit to verification
-                // mail.informToAdmin(newUser.email);
+                mail.informToAdmin(newUser.email);
 
                 req.flash(
                   'success_msg',

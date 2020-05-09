@@ -1,13 +1,18 @@
 <%- include('header') %>
     <!-- Go to Unverified Profile  -->
-    <div
-      class="unverified-profile"
-      data-placement="right"
-      data-toggle="tooltip"
-      title="Unverified Profile Available!"
-    >
-      <span id="close-icon" class="fa fa-exclamation-circle text-warning"></span>
-    </div>
+    <% if(noOfUsers > 0){ %>
+      <div
+        class="unverified-profile"
+        data-placement="right"
+        data-toggle="tooltip"
+        title="<%= noOfUsers %> Unverified Profile here!"
+      >
+      <a href="/admin/unverified-profiles">
+        <span id="close-icon" class="fa fa-exclamation-circle text-warning"></span>
+      </a>
+      </div>
+    <% } %>
+    
 
     <!-- Announcemnt Icon  -->
     <form action="#" method="post">

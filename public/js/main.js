@@ -226,8 +226,6 @@ function setVolunteer(id){
   fetch(`/user/volunteer/${id}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.toString());
-
       switch(data.toString()){
         case 'success':
           $('#pop-up').waitMe('hide');

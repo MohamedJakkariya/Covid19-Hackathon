@@ -151,4 +151,18 @@ router.get('/volunteers', (req, res) => {
   manipulationAdmin.getResults(res, User, 'application-dashboard', 'Volunteers');
 });
 
+// View application statistics of Unverified profiles 
+router.get('/unverified-profiles', (req, res) => {
+  manipulationAdmin.getResults(res, User, 'application-dashboard', 'Unverified');
+});
+
+// set verified user by admin 
+router.get('/set-verified/:id', (req, res) => {
+  console.log(req.params.id);
+  manipulationAdmin.setVerified(req, res);
+});
+
+
+
+
 module.exports = router;
