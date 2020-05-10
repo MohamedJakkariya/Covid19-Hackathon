@@ -5,7 +5,7 @@ const express = require('express'),
     passport = require('passport'),
     flash = require('connect-flash'),
     bodyParser = require('body-parser'),
-    session = require('express-session'),
+    session = require('express-session'), 
     fileUpload = require('express-fileupload');
 
 const app = express();
