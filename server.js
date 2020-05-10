@@ -16,11 +16,11 @@ app.use(express.static(__dirname + '/public'));
 require('./config/passport')(passport);
 
 // DB Config
-const clouddb = require('./config/keys').mongoURI;
-// const localdb = 'mongodb://localhost:27017/adminpanel';
+// const clouddb = require('./config/keys').mongoURI;
+const localdb = 'mongodb://localhost:27017/adminpanel';
 // Connect to MongoDB
 mongoose
-  .connect(clouddb, {
+  .connect(localdb, {
     useNewUrlParser: true,
     useUnifiedTopology: true,  
     useFindAndModify: false,

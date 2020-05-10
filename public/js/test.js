@@ -3,23 +3,6 @@
 //   alert(++call);
 // }, 10000);
 
-// For nav toggle animation 
-// Side navigation
-const openNav = () => {
-  $('.nav-links').css('display', 'unset');
-  $('.openBtn').css('display', 'none');
-  $('.closeBtn').css('display', 'unset');
-  $('#header').css('backgroundColor', 'rgba(4, 27, 21, 0.8)');
-  $('#header').style.height = '100vh';
-}
-
-const closeNav = () => {
-  $('.nav-links').css('display', 'none');
-  $('.openBtn').css('display', 'unset');
-  $('.closeBtn').css('display', 'none');
-  $('#header').style.height = '10vh';
-  $('#header').css('backgroundColor', '#fc4036');
-}
 
 // // Post fetch api  method
 // async function postData(url = '', data = {}) {

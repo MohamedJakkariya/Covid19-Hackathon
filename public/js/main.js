@@ -48,21 +48,42 @@ let activeEnd, confirmedEnd, recoveredEnd, deathsEnd;
 // init();
 
 // Side navigation
-function openNav() {
-  document.querySelector('.nav-links').style.display = 'unset';
-  document.querySelector('.openBtn').style.display = 'none';
-  document.querySelector('.closeBtn').style.display = 'unset';
-  document.getElementById('header').style.backgroundColor =
-    'rgba(4, 27, 21, 0.8)';
-  document.getElementById('header').style.height = '100vh';
+// function openNav() {
+//   document.querySelector('.nav-links').style.display = 'unset';
+//   document.querySelector('.openBtn').style.display = 'none';
+//   document.querySelector('.closeBtn').style.display = 'unset';
+//   document.getElementById('header').style.backgroundColor =
+//     'rgba(4, 27, 21, 0.8)';
+//   document.getElementById('header').style.height = '100vh';
+// }
+
+// function closeNav() {
+//   document.querySelector('.nav-links').style.display = 'none';
+//   document.querySelector('.openBtn').style.display = 'unset';
+//   document.querySelector('.closeBtn').style.display = 'none';
+//   document.querySelector('#header').style.height = '10vh';
+//   document.querySelector('#header').style.backgroundColor = '#fc4036';
+// }
+// For nav toggle animation 
+// Side navigation
+const openNav = () => {
+  $('.nav-links').css('display', 'unset');
+  $('.openBtn').css('display', 'none');
+  $('.closeBtn').css('display', 'unset');
+  $('#header').css('backgroundColor', 'rgba(4, 27, 21, 0.8)');
+  $('#header').animate({
+    'height': '100vh'
+  });
 }
 
-function closeNav() {
-  document.querySelector('.nav-links').style.display = 'none';
-  document.querySelector('.openBtn').style.display = 'unset';
-  document.querySelector('.closeBtn').style.display = 'none';
-  document.querySelector('#header').style.height = '10vh';
-  document.querySelector('#header').style.backgroundColor = '#fc4036';
+const closeNav = () => {
+  $('.nav-links').css('display', 'none');
+  $('.openBtn').css('display', 'unset');
+  $('.closeBtn').css('display', 'none');
+  $('#header').animate({
+    'height': '10vh'
+  });
+  $('#header').css('backgroundColor', '#fc4036');
 }
 
 // Fix the cors policy mechanism
