@@ -76,14 +76,21 @@ Announcement :
     </form>
 
     <div id="admin-nav">
+      <!-- Close button  -->
+      <a  role="button" class="closeBtn" onclick="closeNav()">&times;</a>
+
       <h1>Dashboard</h1>
       <div class="right">
+        <a role="button" class="openBtn">
+          <span onclick="openNav()">&#9776;</span>
+        </a>
         <div class="search">
           <span class="fa fa-search"></span>
         </div>
         <span class="fa fa-bell-o"></span>
         <span class="fa fa-envelope-o"></span>
-        <p>Logout <span class="fa fa-sign-out"></span></p>
+        <p class="hideText">Logout <span class="fa fa-sign-out"></span></p>
+              <!-- Opan Nav  -->
       </div>
     </div>
 
@@ -121,7 +128,7 @@ Announcement :
       </div>
 
       <!-- Main panel  -->
-      <!-- <div class="main-panel">
+      <div class="main-panel">
         <div class="box-container-1">
           <div class="box">
             <p><span class="fa fa-user"></span></p>
@@ -173,12 +180,12 @@ Announcement :
             <h3>Intimation</h3>
             <p class="mt-2">23</p>
           </div>
-        </div>-Box - 2 end-->
+        </div><!--Box - 2 end -->
 
-        <!-- <div class="box-container-3">
+        <div class="box-container-3">
           <div class="chart">
             <div class="option row">
-              <div class="form-group col-sm-2">
+              <div class="col-sm-2 form-group">
                 <select class="form-control" id="options">
                   <option value="line">Line</option>
                   <option value="bar">Bar</option>
@@ -228,10 +235,10 @@ Announcement :
           </div>
           <canvas id="india-chart"></canvas>
         </div>
-        </div>Box-3 end -->
-      <!-- </div> -->
+        </div><!-- Box-3 end -->
+      </div>
       
-      <!-- <div id="chart-analysis"></div> -->
+      <div id="chart-analysis"></div>
          
       <div id="toll-add">
         <div class="heading">
