@@ -6,9 +6,11 @@ const express = require('express'),
     flash = require('connect-flash'),
     bodyParser = require('body-parser'),
     session = require('express-session'), 
-    fileUpload = require('express-fileupload');
-
-const app = express();
+    fileUpload = require('express-fileupload'),
+    app = require('express')(),
+    server = require('http').createServer(app),
+    io = require('socket.io')(server),
+    { chatNow } = require('./routes/chat');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -16,11 +18,11 @@ app.use(express.static(__dirname + '/public'));
 require('./config/passport')(passport);
 
 // DB Config
-const clouddb = require('./config/keys').mongoURI;
-// const localdb = 'mongodb://localhost:27017/adminpanel';
+// const clouddb = require('./config/keys').mongoURI;
+const localdb = 'mongodb://localhost:27017/adminpanel';
 // Connect to MongoDB
 mongoose
-  .connect(clouddb, {
+  .connect(localdb, {
     useNewUrlParser: true,
     useUnifiedTopology: true,  
     useFindAndModify: false,
@@ -63,14 +65,17 @@ app.use(function (req, res, next) {
 });
 
 // Routes
-app.use('/', require('./routes/index.js'));
+// app.use('/', require('./routes/index.js'));
+app.get('/', (req, res) => res.sendFile(__dirname + '/public/html/chat.html'));
 app.use('/user', require('./routes/user.js'));
 app.use('/admin', require('./routes/admin.js'));
 
+// For chat application passing io instance
+chatNow(io);
 
 const PORT = process.env.PORT || 4000;
 
 // Port start
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running on port #${PORT}`);
 });

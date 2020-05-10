@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css" />
+
+    <!-- Font Awesome  -->
+    <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+
+    <!-- CheetSheet -->
+    <link rel="stylesheet" href="../css/style.min.css" />
+    <title>DHelp</title>
+  </head>
+  <body>  
+    
+    <div id="chat">
+        <h1 class="text-center text-capitalize py-3 text-danger">Chat Box</h1>
+        <div class="chat-messages"></div>
+        
+        <form id="msg-form">
+            <div class="input-box">
+                <input type="text" id="msg" name="msg">
+                <button type="submit" class="btn btn-danger"><span class="fa fa-send"></span></button>
+            </div>
+        </form>
+    </div>
+    
+    
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../js/chat.js"></script>
+  </body>
+</html>
