@@ -65,8 +65,8 @@ app.use(function (req, res, next) {
 });
 
 // Routes
-// app.use('/', require('./routes/index.js'));
-app.get('/', (req, res) => res.sendFile(__dirname + '/public/html/chat.html'));
+app.use('/', require('./routes/index.js'));
+// app.get('/', (req, res) => res.sendFile(__dirname + '/public/html/chat.html'));
 app.use('/user', require('./routes/user.js'));
 app.use('/admin', require('./routes/admin.js'));
 

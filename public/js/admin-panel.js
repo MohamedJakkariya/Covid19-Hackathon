@@ -270,6 +270,21 @@ const getParticularObject = (setName, name, option, choice) => {
 showGraph('active');
 
 $(document).ready(() => {
+  // Chat box open and close 
+  $('#chat-open').on('click', () => {
+    $('#chat-open').css('display', 'none');
+    $('#chat').animate({
+      right: '0rem'
+    }, 'slow');
+  });
+
+  $('#chat-close').on('click', () => {
+    $('#chat-open').css('display', 'unset');
+    $('#chat').animate({
+      right: '-30rem'
+    }, 'slow');
+  });
+
   $('#options').on('change', async (e) => {
     mode = e.target.value;
     $('#primary').prop('checked', true);

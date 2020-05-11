@@ -16,8 +16,14 @@
   </head>
   <body>  
     
+    <button id="chat-open" class="btn btn-danger">
+      <span class="fa fa-snapchat-ghost"></span>
+    </button>
     <div id="chat">
-        <h1 class="text-center text-capitalize py-3 text-danger">Chat Box</h1>
+        <h1 class="text-center text-capitalize py-3 text-danger">
+          <button class="btn btn-danger-outline" id="close-chat"><span class="fa fa-arrow-right"></span></button>
+          Chat Box
+        </h1>
         <div class="chat-messages"></div>
         
         <form id="msg-form">

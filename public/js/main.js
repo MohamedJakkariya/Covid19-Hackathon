@@ -250,6 +250,20 @@ $(document).ready(() => {
       left: '-30rem'
     }, 'slow');
   });
+
+  $('#chat-open').on('click', () => {
+    $('#chat-open').css('display', 'none');
+    $('#chat').animate({
+      right: '0rem'
+    }, 'slow');
+  });
+
+  $('#chat-close').on('click', () => {
+    $('#chat-open').css('display', 'unset');
+    $('#chat').animate({
+      right: '-30rem'
+    }, 'slow');
+  });
 });
 
 
