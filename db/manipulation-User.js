@@ -6,7 +6,8 @@ const Personal = require('../models/Personal'),
   Transport = require('../models/Transport'),
   Doctor = require('../models/Doctor'),
   Toll = require('../models/Toll'),
-  User = require('../models/User');
+  User = require('../models/User'),
+  Chat = require('../models/Chat');
 
 exports.insertDataToFood = (req, res) => {
   const { name, mobile, age, currentAddress, foodmembers, foodlist } = req.body;
@@ -292,14 +293,24 @@ exports.setVolunteer = (req, res) => {
     });
 };
 
-exports.getTollList = (req, res) => {
-  Toll.find({}, (err, docs) => {
+exports.getTollList =  (req, res) => {
+  Toll.find({}, async (err, docs) => {
     if(err) console.log(err);
+
+      // Store all chats into Array;
+      let allChats;
+      // //   Finding all preivous chats
+      await Chat.find({}, (err, docs) => {
+        if (err) throw err;
+        allChats = docs.map(m => m);
+      });
     
     res.render('user-panel', {
       Id: req.user._id,
       profile: req.user.profile,
-      numberlist: docs
+      userName: req.user.fullname,
+      numberlist: docs,
+      chatMsg: allChats
     });
   });
 }

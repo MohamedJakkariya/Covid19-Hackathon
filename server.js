@@ -9,7 +9,9 @@ const express = require('express'),
     fileUpload = require('express-fileupload'),
     app = require('express')(),
     server = require('http').createServer(app),
-    io = require('socket.io')(server),
+    io = require('socket.io')(server,{
+      pingTimeout: 000
+    }),
     { chatNow } = require('./routes/chat');
 
 app.use(express.static(__dirname + '/public'));

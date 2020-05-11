@@ -7,7 +7,9 @@ const Personal = require('../models/Personal'),
   Doctor = require('../models/Doctor'),
   Toll = require('../models/Toll'),
   User = require('../models/User'),
-  mail = require('../utils/sedingMail');
+ Chat = require('../models/Chat'),
+  mail = require('../utils/sedingMail'),
+  msgManipulation = require('../db/store-chats');
 
 exports.getStatistics = async (req, res, route) => {
   let noOfUsers = 0,
@@ -80,6 +82,14 @@ exports.getStatistics = async (req, res, route) => {
   noOfApplication =
     noOfHospitalAdmission + noOfDoctorAdmission + noOfLabResult + noOfSymptoms;
 
+    // Store all chats into Array;
+  let allChats;
+  //   Finding all preivous chats
+  await Chat.find({}, (err, docs) => {
+    if (err) throw err;
+    allChats = docs.map(m => m);
+  });
+  
   await res.render(route, {
     noOfHospitalAdmission,
     noOfUsers,
@@ -88,6 +98,7 @@ exports.getStatistics = async (req, res, route) => {
     noOfDoctorAdmission,
     noOfLabResult,
     noOfSymptoms,
+    chatMsg: allChats
   });
 };
 

@@ -1,3 +1,5 @@
+const msgStore = require('../db/store-chats');
+
 const chatNow = (io) => {
 
     // set global room id 
@@ -13,7 +15,12 @@ const chatNow = (io) => {
 
     socket.on('send_msg', (msg) => {
       // send the receive msg to all users
+      console.log(msg);
+      
       socket.broadcast.emit('receive_msg', msg);
+
+      // Save chat msgs 
+      msgStore.insertMsgToChat(msg);
     });
 
     // User disconnection 

@@ -1,5 +1,11 @@
  <%- include('header') %>
   <body>
+
+    <!-- Get user id  -->
+    <script>
+      var id = '<%= Id %>';
+      var username = '<%= userName %>';
+    </script>
       
     <%- include('navbar') %>
 
@@ -347,6 +353,6 @@
     <script src="../js/main.js"></script>
     <script src="../js/state.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="../js/chat.js"></script>
+    <script src="../js/user-chat.js"></script>
   </body>
 </html>

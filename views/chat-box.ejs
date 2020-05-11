@@ -1,18 +1,46 @@
 <!-- Chat application  -->
 <button id="chat-open" class="btn btn-danger">
-    <span class="fa fa-snapchat-ghost"></span>
-  </button>
-  <div id="chat">
-      <h1 class="text-center text-capitalize py-3 text-danger">
-        <button class="btn btn-danger-outline" id="chat-close"><span class="fa fa-arrow-right"></span></button>
-        Chat Box
-      </h1>
-      <div class="chat-messages"></div>
-      
-      <form id="msg-form">
-          <div class="input-box">
-              <input type="text" id="msg" name="msg">
-              <button type="submit" class="btn btn-danger"><span class="fa fa-send"></span></button>
-          </div>
-      </form>
+  <span class="fa fa-snapchat-ghost"></span>
+</button>
+<div id="chat">
+  <h1 class="text-center text-capitalize py-3 text-danger">
+    <button class="btn btn-danger-outline" id="chat-close">
+      <span class="fa fa-arrow-right"></span>
+    </button>
+    Community Help
+  </h1>
+  <div class="chat-messages">
+    <% chatMsg.forEach(msg => { %>
+    <div class="msg-box">
+        <% if(msg.username === 'admin'){ %>
+            <p>
+                <%= msg.time.toLocaleTimeString([],{hour12:true,hour: '2-digit', minute:
+                '2-digit'}) %> <span><%= msg.username %> <span class="fa fa-user-secret"></span></span>
+              </p>
+        <% }else{ %>
+            <p>
+                <%= msg.time.toLocaleTimeString([],{hour12:true,hour: '2-digit', minute:
+                '2-digit'}) %> <span><%= msg.username %> </span>
+              </p>
+        <% } %>
+      <div class="msg">
+        <img src="../img/modal-profile.jpg" alt="" />
+        <% if(msg.username === 'admin'){ %>
+            <p class="bg-dark text-white"><%= msg.msg %></p>
+        <% }else{ %>
+            <p><%= msg.msg %></p>
+        <% } %>
+      </div>
+    </div>
+    <% }) %>
   </div>
+
+  <form id="msg-form">
+    <div class="input-box">
+      <input type="text" id="msg" name="msg" />
+      <button type="submit" class="btn btn-danger">
+        <span class="fa fa-send"></span>
+      </button>
+    </div>
+  </form>
+</div>
