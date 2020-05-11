@@ -263,4 +263,26 @@ router.post('/volunteer', (req, res) => {
     manipulationUser.setVolunteer(req, res);
   }
 });
+
+
+// Forgot password route
+router.get('/forgot-password', (req, res) => {
+  res.render('forgot-password');
+});
+
+// Sent password to that mail
+router.post('/forgot-password', (req, res) => {
+  manipulationUser.setResetToken(req, res);
+});
+
+// Get the link page
+router.get('/password-reset/:token', function (req, res) {
+  manipulationUser.getResetPasswordPage(req, res);
+});
+
+// Password change into db and confirmation email send to student
+router.post('/password-reset/:token', function (req, res) {
+  manipulationUser.setPasswordChange(req, res);
+});
+
 module.exports = router;

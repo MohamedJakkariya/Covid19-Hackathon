@@ -10,7 +10,7 @@ const express = require('express'),
     app = require('express')(),
     server = require('http').createServer(app),
     io = require('socket.io')(server,{
-      pingTimeout: 000
+      pingTimeout: 20000
     }),
     { chatNow } = require('./routes/chat');
 
@@ -20,11 +20,11 @@ app.use(express.static(__dirname + '/public'));
 require('./config/passport')(passport);
 
 // DB Config
-const clouddb = require('./config/keys').mongoURI;
-// const localdb = 'mongodb://localhost:27017/adminpanel';
+// const clouddb = require('./config/keys').mongoURI;
+const localdb = 'mongodb://localhost:27017/adminpanel';
 // Connect to MongoDB
 mongoose
-  .connect(clouddb, {
+  .connect(localdb, {
     useNewUrlParser: true,
     useUnifiedTopology: true,  
     useFindAndModify: false,

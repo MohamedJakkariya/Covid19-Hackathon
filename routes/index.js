@@ -8,7 +8,7 @@ const router = express.Router(),
 
 // Welcome Page
 router.get('/', (req, res) => res.render('index'));
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard',ensureAuthenticated, (req, res) => {
   manipulationforAdmin.getStatistics(req, res, 'admin-panel');
 });
 router.get('/user-profile', ensureAuthenticated, (req, res) => {
