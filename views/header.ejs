@@ -3,9 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- For hiding the address bar when ist loaded from homescreen shortcut  -->
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-mobile-web-app-title" content="DHelp"/>
+
+    <!-- change the splash screen colour of the app  -->
+    <meta name="msapplication-TileColor" content="#000000"/>
+    <meta name="theme-color" content="3fc4036"/>    
     
     <!-- Fix the fetch bug  -->
     <base href="/">
+
+    <!-- Add homescreen call out package  -->
+    <link rel="stylesheet" href="../add_to_homescreen/style/addtohomescreen.css">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
