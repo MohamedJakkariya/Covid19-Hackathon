@@ -74,6 +74,12 @@ const UserSchema = new mongoose.Schema({
   profile: {
     type: String,
     default: 'modal-profile.jpg'
+  },
+  lat: {
+    type: Number
+  },
+  lang:{
+    type: Number
   }
 });
 

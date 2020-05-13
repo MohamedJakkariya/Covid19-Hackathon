@@ -88,17 +88,17 @@ exports.getStatistics = async (req, res, route) => {
   await Chat.find({}, (err, docs) => {
     if (err) throw err;
     allChats = docs.map(m => m);
-  });
-  
-  await res.render(route, {
-    noOfHospitalAdmission,
-    noOfUsers,
-    noOfApplication,
-    noOfVolunteers,
-    noOfDoctorAdmission,
-    noOfLabResult,
-    noOfSymptoms,
-    chatMsg: allChats
+
+    res.render(route, {
+      noOfHospitalAdmission,
+      noOfUsers,
+      noOfApplication,
+      noOfVolunteers,
+      noOfDoctorAdmission,
+      noOfLabResult,
+      noOfSymptoms,
+      chatMsg: allChats
+    });
   });
 };
 

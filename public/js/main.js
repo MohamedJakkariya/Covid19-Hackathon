@@ -269,10 +269,34 @@ $(document).ready(() => {
 
 // Set setVolunteer 
 function setVolunteer(id){
+  geoFindMe();
+}
 
-  fetch(`/user/volunteer/${id}`)
-    .then((response) => response.json())
+
+// To know about location of user 
+const geoFindMe = () => {
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error, geoOptions);
+  } else {
+      console.log("Geolocation services are not supported by your web browser.");
+  }
+}
+
+const success = (position) => {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  const altitude = position.coords.altitude;
+  const accuracy = position.coords.accuracy;
+  console.log(`lat: ${latitude} long: ${longitude}`);
+
+  // Set us user as a volunteer 
+    postData(`/user/volunteer/${id}`,{
+        latitude,
+        longitude
+    })
     .then((data) => {
+      console.log(data);
+      
       switch(data.toString()){
         case 'success':
           $('#pop-up').waitMe('hide');
@@ -280,9 +304,7 @@ function setVolunteer(id){
           $('#pop-intimation').modal('show');  
           break;
         case 'error':
-          $('#pop-up').waitMe('hide');
-          $('#pop-confirmation').modal('hide');
-          $('#pop-error').modal('show');  
+          errorPOP(); 
           break;
         case 'override':
           $('#pop-up').waitMe('hide');
@@ -298,7 +320,28 @@ function setVolunteer(id){
       }
     })
     .catch((error) => {
+      errorPOP(); 
       console.error('Error:', error);
     });
 
+}
+
+const error = (error) => {
+  $('#pop-up').waitMe('hide');
+  $('#pop-confirmation').modal('hide');
+  $('#pop-error').modal('show'); 
+  console.log(`Unable to retrieve your location due to ${error.code}: ${error.message}`);
+}
+
+const geoOptions = {
+  enableHighAccuracy: true,
+  maximumAge: 30000,
+  timeout: 27000
+};
+
+// Show error popup and hide it all 
+const errorPOP = () => {
+  $('#pop-up').waitMe('hide');
+  $('#pop-confirmation').modal('hide');
+  $('#pop-error').modal('show'); 
 }

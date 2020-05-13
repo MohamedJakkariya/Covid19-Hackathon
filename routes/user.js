@@ -212,12 +212,6 @@ router.get('/lab', (req, res) =>
   })
 );
 
-router.get('/volunteer/:id', (req, res) => {
-  console.log(req.params.id);
-  manipulationUser.setVolunteer(req, res);  
-}
-);
-
 // Apply stuff POST route
 router.post('/sympotoms', (req, res) => {
   console.log(req.body);
@@ -264,6 +258,11 @@ router.post('/volunteer', (req, res) => {
   }
 });
 
+router.post('/volunteer/:id', (req, res) => {
+  console.log(req.params.id);
+    manipulationUser.setVolunteer(req, res);  
+}
+);
 
 // Forgot password route
 router.get('/forgot-password', (req, res) => {

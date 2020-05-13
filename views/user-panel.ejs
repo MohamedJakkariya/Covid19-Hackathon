@@ -249,11 +249,12 @@
             </button>
           </div>
           <div class="modal-body">
-            Are you sure become a volunteer of our community?
+            If you want to become a volunteer of our community kindly read it our
+            <a href="#" class="text-primary">instruction for the volunteer</a>. <br> After click the <span class="text-danger">Enable</span> button to know your location asap.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-            <button type="button" class="btn btn-success" id="pop-up"  onclick="setVolunteer('<%= Id %>')">Confirm</button>
+            <button type="button" class="btn btn-success" id="pop-up"  onclick="setVolunteer('<%= Id %>')">Enable</button>
           </div>
         </div>
       </div>
@@ -337,7 +338,7 @@
             </div>
             <div class="modal-body">
               <p>
-                Something went wrong! such as db connection or admin disconnect. so kindly try again after some time. Thank you.
+                Something went wrong! try again !
               </p>
             </div>
             <div class="modal-footer">
@@ -350,6 +351,7 @@
 <%- include('chat-box') %>
   
 <%- include('footer') %>
+    <script src="../js/fetchAPI.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/state.js"></script>
     <script src="/socket.io/socket.io.js"></script>

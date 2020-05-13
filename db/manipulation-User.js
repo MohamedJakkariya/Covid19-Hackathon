@@ -237,31 +237,8 @@ exports.insertDataToLab= (req, res) => {
       .catch((err) => console.log(err));
 };
 
-exports.setVolunteer = (req, res) => {
-    filter = { id: req.body.id };
-    update = {
-      isCheck: true,
-    };
 
-    // `doc` is the document _before_ `update` was applied
-    Login.findOneAndUpdate(filter, update, { new: true }, (err, doc) => {
-      if (err) {
-        console.log('Something went wrong when the update!');
-        req.flash('error_msg', 'Something went wrong when Updated!');
-        console.log(errors);
-        res.render('apply', {
-          action: 'volunteer',
-          For: 'Apply for Volunteer member',
-        })
-      }
-      console.log(doc);
-      req.flash('success_msg', 'Now you\'re volunteer of the community!');
-      res.redirect('/user-profile');
-    });
-
-};
-
-
+// Set isVolunteer of location 
 exports.setVolunteer = (req, res) => {
   let data = '';
     
@@ -279,6 +256,11 @@ exports.setVolunteer = (req, res) => {
           data = 'success';
 
           doc.isVolunteer = true;
+          doc.lat = req.body.latitude;
+          doc.lang = req.body.longitude;
+
+          console.log(doc);
+          
           doc.save(() => {
             res.send(JSON.stringify(data));
           });
@@ -295,25 +277,25 @@ exports.setVolunteer = (req, res) => {
     });
 };
 
-exports.getTollList =  (req, res) => {
-  Toll.find({}, async (err, docs) => {
+exports.getTollList = async (req, res) => {
+  await Toll.find({},  (err, tolldocs) => {
     if(err) console.log(err);
 
       // Store all chats into Array;
       let allChats;
       // //   Finding all preivous chats
-      await Chat.find({}, (err, docs) => {
+      Chat.find({}, (err, docs) => {
         if (err) throw err;
         allChats = docs.map(m => m);
+
+        res.render('user-panel', {
+          Id: req.user._id,
+          profile: req.user.profile,
+          userName: req.user.fullname,
+          numberlist: tolldocs,
+          chatMsg: allChats
+        });
       });
-    
-    res.render('user-panel', {
-      Id: req.user._id,
-      profile: req.user.profile,
-      userName: req.user.fullname,
-      numberlist: docs,
-      chatMsg: allChats
-    });
   });
 }
 
