@@ -240,7 +240,7 @@ router.post('/hospital', (req, res) => {
 
 router.post('/doctor', (req, res) => {
   console.log(req.body);
-  manipulationUser.insertDataToSymptoms(req, res);
+  manipulationUser.insertDataToDoctor(req, res);
 });
 
 router.post('/lab', (req, res) => {

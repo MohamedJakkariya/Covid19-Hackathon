@@ -45,7 +45,7 @@ exports.insertDataToTransport= (req, res) => {
       name,
       mobile,
       age,
-      currentAddress,
+      address: currentAddress,
       isCheck,
       transportMonth,
       transportType
@@ -102,7 +102,7 @@ exports.insertDataToPersonal= (req, res) => {
       name,
       mobile,
       age,
-      currentAddress
+      address : currentAddress
     });
 
     newData
@@ -185,18 +185,20 @@ exports.insertDataHospital= (req, res) => {
 
 
 exports.insertDataToDoctor= (req, res) => {
-  const { name, mobile, age, currentAddress, symptomName, days,tablets,hospitalName } = req.body;
+  const { name, mobile, age, currentAddress, symptomName, days,tablets,hospitalName, hospitalGo } = req.body;
 
     const isCheck = true;
     const newData = new Doctor({
       name,
       mobile,
       age,
-      currentAddress,
+      address : currentAddress,
       isCheck,
       days,
       tablets,
-      hospitalName
+      hospitalName,
+      symptomName,
+      hospitalGo
     });
 
     newData

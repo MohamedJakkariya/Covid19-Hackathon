@@ -120,13 +120,13 @@ exports.setVerified = (req, res) => {
   // `doc` is the document _before_ `update` was applied
 
   User.findOneAndUpdate(
-    req.params.id,
+    {_id: req.params.id},
     { isVerified: true, new: true },
     (err, doc) => {
       if (err) {
         res.send(JSON.stringify('error'));
       }
-      console.log(doc.email);
+      console.log(doc);
       // Profile Verified notification
       mail.informToUser(
         doc.email,
