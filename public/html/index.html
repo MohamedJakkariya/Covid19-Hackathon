@@ -10,8 +10,8 @@
     <!-- Font Awesome  -->
     <!-- <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css"> -->
 
-    <!-- Vegas slideshow plugin  -->
-    <link rel="stylesheet" href="../lib/vegas-master/dist/vegas.css">
+    <!-- slideshow plugin  -->
+    <link rel="stylesheet" href="../lib/slideWiz/css/slideWiz.css">
 
     <!-- CheetSheet -->
     <link rel="stylesheet" href="../css/style.min.css" />
@@ -48,7 +48,7 @@
 
     <!-- Showcase  -->
     <section id="home">
-      <div id="caption"></div>
+      <div id="slideWiz"></div>
     </section>
 
     <section id="what"></section>
@@ -108,35 +108,11 @@
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
     <!-- <script src="../js/main.js"></script> -->
     <!-- <script src="../js/client.js"></script> -->
-    <script src="../lib/vegas-master/dist/vegas.js"></script>
+    <script src="../lib/slideWiz/js/slideWiz.js"></script>
 
     <script>
       $(function() {
 
-        var bg_show = [
-            { src:'../img/slides/slide-7.jpg' },
-            { src:'../img/slides/slide-8.jpg' },
-            { src:'../img/slides/slide-9.jpg' },
-            // { src:'../img/slides/slide-10.jpg' },
-            { src:'../img/slides/slide-11.jpg' },
-            { src:'../img/slides/slide-1.jpg' },
-          ];
-
-          var bg_caption = [
-            { src:'../img/Icon-images/covid-green.png' },
-            { src:'../img/Icon-images/doctor check.png' },
-            { src:'../img/Icon-images/indigation.png' },
-            { src:'../img/Icon-images/wear mask.png' },
-            // { src:'../img/Icon-images/covid.gif' },
-            // { src:'../img/Icon-images/covid.gif' },
-          ];
-
-        $('#home').vegas({
-          delay: 4000,
-          slides: bg_show,
-          align: 'center',
-          transition: 'swirlRight2',
-        });
         // navbar show and hide effect 
         window.addEventListener('scroll', (e) => {
           if($('html').scrollTop() > 50){
@@ -145,9 +121,92 @@
               'transition': '0.4s linear'
             });
           }else{
-            $('#header').css('backgroundColor','rgba(204, 237, 210,0.3)');
+            $('#header').css('backgroundColor','transparent');
           }
         });
+
+        // Slide show customization 
+        $('#home').slideWiz({
+          auto: true,
+          speed: 5000,
+          row: 12,
+          col: 35,
+          animation: [
+              // 'flip',
+              // 'slice',
+              // 'box3D',
+              // 'pixel',
+              // 'fade',
+              'glide',
+              // 'card'
+          ],
+          file: [
+              {
+                  src: {
+                      main: "/public/img/icon-images/covid-green.png",
+                      cover: "/public/img/slides/slide-1.jpg"
+                  },
+                  title: 'slideWiz Library - 1',
+                  desc: "1: slideWiz is a JQuery based library created by a Nigerian Software " +
+                  "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
+                  "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
+                  descLength: 220,
+                  button: {
+                      text: 'GitHub - 1',
+                      url: 'https://github.com/iamwizzdom/slideWiz',
+                      class: 'btn btn-medium btn-primary'
+                  }
+              },
+              {
+                  src: {
+                      main: "/public/img/icon-images/wear mask.png",
+                      cover: "/public/img/slides/slide-2.jpg"
+                  },
+                  title: 'slideWiz Library - 2',
+                  desc: "2: slideWiz is a JQuery based library created by a Nigerian Software " +
+                  "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
+                  "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
+                  button: {
+                      text: 'GitHub - 2',
+                      url: 'https://github.com/iamwizzdom/slideWiz',
+                      class: 'btn btn-medium btn-primary'
+                  }
+              },
+              {
+                  src: {
+                      main: "/public/img/icon-images/covid-green.png",
+                      cover: "/public/img/slides/slide-3.jpg"
+                  },
+                  title: 'slideWiz Library - 3',
+                  desc: "3: slideWiz is a JQuery based library created by a Nigerian Software " +
+                  "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
+                  "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
+                  descLength: 190,
+                  button: {
+                      text: 'GitHub - 3',
+                      url: 'https://github.com/iamwizzdom/slideWiz',
+                      class: 'btn btn-medium btn-primary'
+                  }
+              },
+              {
+                  src: {
+                      main: "/public/img/icon-images/covid-green.png",
+                      cover: "/public/img/slides/slide-4.jpg"
+                  },
+                  title: 'slideWiz Library - 4',
+                  desc: "4: slideWiz is a JQuery based library created by a Nigerian Software " +
+                  "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
+                  "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
+                  button: {
+                      text: 'GitHub - 4',
+                      url: false,
+                      class: 'btn btn-medium btn-primary'
+                  }
+              }
+          ]
+
+      });
+
       });
     </script>
   </body>
