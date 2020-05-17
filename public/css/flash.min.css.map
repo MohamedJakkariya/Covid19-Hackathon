@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAIA,AAAA,uBAAuB,CACvB,wBAAwB,AAAC,CACrB,OAAO,CAAE,CAAC,CACV,MAAM,CAAE,cAAc,CAAG,AAE7B,AAAA,0BAA0B,CAC1B,2BAA2B,AAAC,CACxB,OAAO,CAAE,CAAC,CACV,MAAM,CAAE,aAAa,CAAG,AAE5B,AAAA,4BAA4B,AAAC,CACzB,OAAO,CAAE,CAAC,CACV,MAAM,CAAE,cAAc,CAAG",
+    "sources": [
+        "../lib/vegas-master/src/sass/transitions/flash.sass"
+    ],
+    "names": [],
+    "file": "flash.min.css"
+}

@@ -1,7 +1,6 @@
 <%- include('header') %>
+  <body>
 
-<body>
-    
     <%- include('navbar') %>
 
     <!-- Showcase  -->
@@ -185,9 +184,39 @@
         <p>&copy;DHelp. All Rights Reserved</p>
       </div>
     </footer>
-    
-<%- include('footer') %>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src="../js/main.js"></script>
+    <%- include('footer') %>
+    <script src="../lib/vegas-master/dist/vegas.js"></script>
+    <!-- <script src="../js/main.js"></script> -->
+    <!-- <script src="../js/client.js"></script> -->
+
+    <script>
+      $(function() {
+        $('#home').vegas({
+          slides: [
+            { src:'../img/slides/slide-1.jpg' },
+            { src:'../img/slides/slide-2.jpg' },
+            { src:'../img/slides/slide-3.jpg' },
+            { src:'../img/slides/slide-4.jpg' },
+            { src:'../img/slides/slide-5.jpg' },
+            { src:'../img/slides/slide-6.jpg' },
+          ],
+          align: 'center'
+        });
+
+        // navbar show and hide effect 
+        window.addEventListener('scroll', (e) => {
+          if($('html').scrollTop() > 50){
+            $('#header').css({
+              'backgroundColor' : '#cc0e74',
+              'transition': '0.4s linear'
+            });
+          }else{
+            $('#header').css('backgroundColor','transparent');
+          }
+        });
+      });
+    </script>
   </body>
 </html>

@@ -10,6 +10,9 @@
     <!-- Font Awesome  -->
     <!-- <link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css"> -->
 
+    <!-- Vegas slideshow plugin  -->
+    <link rel="stylesheet" href="../lib/vegas-master/dist/vegas.css">
+
     <!-- CheetSheet -->
     <link rel="stylesheet" href="../css/style.min.css" />
     <title>DHelp</title>
@@ -45,135 +48,10 @@
 
     <!-- Showcase  -->
     <section id="home">
-      <div id="caption">
-        <h1>Welcome to Disaster Help</h1>
-        <p>
-          <q>The starting point of all achievements is desire.</q> <br /><span
-            >-Napoleon Hill</span
-          >
-        </p>
-      </div>
+      <div id="caption"></div>
     </section>
 
-    <div class="title">
-      <h1><span class="highlight">Covid19</span> Status</h1>
-    </div>
-
-    <section id="statistics">
-      <div class="analysis">
-        <div class="box">
-          <select class="form-control" onchange="getCountryReport()" id="country">
-            <option value="Global">World</option>
-            <option value="India">India</option>
-            <option value="China">China</option>
-            <option value="Pakistan">Pakistan</option>
-            <option value="Italy">Italy</option>
-            <option value="Australia">Australia</option>
-            <option value="America">Russia</option>
-          </select>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3 id="confirmed">0</h3>
-            <p>Total Case</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3 id="active">0</h3>
-            <p>Active Cases</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3 id="deaths">0</h3>
-            <p>Deaths</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3 id="recovered">0</h3>
-            <p>Recovered</p>
-          </div>
-        </div>        
-      </div>
-
-      <div class="chart">
-          <div class="option">
-            <div class="radio-group">
-              <input type="radio" checked id="a-select" class="checkmark" onclick="showGraph('active')" name="option">
-              <label for="a-select">
-                <div class="check"></div>
-                Active
-              </label>
-            </div>
-
-          <div class="radio-group">
-            <input type="radio" id="c-select" class="checkmark" onclick="showGraph('confirmed')" name="option">            
-            <label for="c-select">
-              <div class="check"></div>
-              Confirmed
-            </label>
-            </div>
-
-            <div class="radio-group">
-              <input type="radio" id="d-select" class="checkmark" onclick="showGraph('deaths')" name="option">        
-              <label for="d-select">
-                <div class="check"></div>
-                Deaths
-              </label>
-            </div>
-            <div class="radio-group">
-              <input type="radio" id="r-select" class="checkmark" onclick="showGraph('recovered')" name="option">        
-              <label for="r-select">
-                <div class="check"></div>
-                Recovered
-              </label>
-            </div>
-        </div>
-        <canvas id="chart"></canvas>
-      </div>
-    </section>
-
-    <div class="title">
-      <h1>
-        STAY <span class="highlight">HOME</span> SAVE<span class="highlight"
-          >LIVES</span
-        >
-      </h1>
-      <p>Help stop coronavirus</p>
-    </div>
-
-    <section id="what">
-      <div class="content">
-        <h1>What is corona virus ?</h1>
-
-        <p>
-          <q>
-            Corona viruses are a large family of viruses which may cause illness
-            in animals or humans. In humans, several coronaviruses are known to
-            cause respiratory infections ranging from the common cold to more
-            severe diseases such as Middle East Respiratory Syndrome (MERS) and
-            Severe Acute Respiratory Syndrome (SARS). The most recently
-            discovered coronavirus causes coronavirus disease COVID-19.
-          </q>
-        </p>
-
-        <h1>What is <span class="highlight">Covid19</span> ?</h1>
-        <p>
-          <q>
-            COVID-19 is the infectious disease caused by the most recently
-            discovered corona virus. This new virus and disease were unknown
-            before the outbreak began in Wuhan, China, in December 2019.
-          </q>
-        </p>
-      </div>
-      <img src="../img/showcase-1.jpg" alt="" />
-    </section>
+    <section id="what"></section>
 
     <section id="prevention"></section>
     <section id="fund"></section>
@@ -228,8 +106,49 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="../lib/jquery/jquery.min.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../lib/animated-counter/animationCounter.min.js"></script>
     <!-- <script src="../js/main.js"></script> -->
     <!-- <script src="../js/client.js"></script> -->
+    <script src="../lib/vegas-master/dist/vegas.js"></script>
+
+    <script>
+      $(function() {
+
+        var bg_show = [
+            { src:'../img/slides/slide-7.jpg' },
+            { src:'../img/slides/slide-8.jpg' },
+            { src:'../img/slides/slide-9.jpg' },
+            // { src:'../img/slides/slide-10.jpg' },
+            { src:'../img/slides/slide-11.jpg' },
+            { src:'../img/slides/slide-1.jpg' },
+          ];
+
+          var bg_caption = [
+            { src:'../img/Icon-images/covid-green.png' },
+            { src:'../img/Icon-images/doctor check.png' },
+            { src:'../img/Icon-images/indigation.png' },
+            { src:'../img/Icon-images/wear mask.png' },
+            // { src:'../img/Icon-images/covid.gif' },
+            // { src:'../img/Icon-images/covid.gif' },
+          ];
+
+        $('#home').vegas({
+          delay: 4000,
+          slides: bg_show,
+          align: 'center',
+          transition: 'swirlRight2',
+        });
+        // navbar show and hide effect 
+        window.addEventListener('scroll', (e) => {
+          if($('html').scrollTop() > 50){
+            $('#header').css({
+              'backgroundColor' : '#cc0e74',
+              'transition': '0.4s linear'
+            });
+          }else{
+            $('#header').css('backgroundColor','rgba(204, 237, 210,0.3)');
+          }
+        });
+      });
+    </script>
   </body>
 </html>

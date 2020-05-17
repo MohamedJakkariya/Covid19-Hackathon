@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAIA,AAAA,4BAA4B,CAC5B,6BAA6B,AAAC,CAC1B,SAAS,CAAE,iBAAiB,CAAG,AAEnC,AAAA,+BAA+B,CAC/B,gCAAgC,AAAC,CAC7B,SAAS,CAAE,cAAc,CAAG,AAEhC,AAAA,iCAAiC,AAAC,CAC9B,SAAS,CAAE,gBAAgB,CAAG",
+    "sources": [
+        "../lib/vegas-master/src/sass/transitions/slide-right.sass"
+    ],
+    "names": [],
+    "file": "slide-right.min.css"
+}
