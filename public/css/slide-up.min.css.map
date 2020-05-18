@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAIA,AAAA,yBAAyB,CACzB,0BAA0B,AAAC,CACvB,SAAS,CAAE,gBAAgB,CAAG,AAElC,AAAA,4BAA4B,CAC5B,6BAA6B,AAAC,CAC1B,SAAS,CAAE,cAAc,CAAG,AAEhC,AAAA,8BAA8B,AAAC,CAC3B,SAAS,CAAE,iBAAiB,CAAG",
-    "sources": [
-        "../lib/vegas-master/src/sass/transitions/slide-up.sass"
-    ],
-    "names": [],
-    "file": "slide-up.min.css"
-}

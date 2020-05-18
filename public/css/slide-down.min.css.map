@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAIA,AAAA,2BAA2B,CAC3B,4BAA4B,AAAC,CACzB,SAAS,CAAE,iBAAiB,CAAG,AAEnC,AAAA,8BAA8B,CAC9B,+BAA+B,AAAC,CAC5B,SAAS,CAAE,cAAc,CAAG,AAEhC,AAAA,gCAAgC,AAAC,CAC7B,SAAS,CAAE,gBAAgB,CAAG",
-    "sources": [
-        "../lib/vegas-master/src/sass/transitions/slide-down.sass"
-    ],
-    "names": [],
-    "file": "slide-down.min.css"
-}

@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAIA,AAAA,sBAAsB,CACtB,uBAAuB,AAAC,CACpB,OAAO,CAAE,CAAC,CACV,MAAM,CAAE,eAAe,CAAC,eAAe,CAAG,AAE9C,AAAA,yBAAyB,CACzB,0BAA0B,AAAC,CACvB,OAAO,CAAE,CAAC,CACV,MAAM,CAAE,cAAc,CAAC,cAAc,CAAG,AAE5C,AAAA,2BAA2B,AAAC,CACxB,OAAO,CAAE,CAAC,CACV,MAAM,CAAE,eAAe,CAAC,eAAe,CAAG",
-    "sources": [
-        "../lib/vegas-master/src/sass/transitions/burn.sass"
-    ],
-    "names": [],
-    "file": "burn.min.css"
-}

@@ -29,7 +29,7 @@
     font-size: 20px;
     position: absolute;
     top: calc(50% - 15px);
-    z-index:9999;
+    z-index:-111;
     cursor: pointer;
 }
 
@@ -78,6 +78,8 @@
     height: 100%;
     position: absolute;
     transition: all 0.6s;
+    border: none;
+    border-radius: unset;
     overflow: hidden;
 }
 

@@ -15,6 +15,9 @@
 
     <!-- CheetSheet -->
     <link rel="stylesheet" href="../css/style.min.css" />
+
+    <!-- animate css  -->
+    <link rel="stylesheet" href="../lib/wow/css/animate.css">
     <title>DHelp</title>
   </head>
   <body>
@@ -46,14 +49,30 @@
       </a>
     </div>
 
-    <!-- Showcase  -->
-    <section id="home">
-      <div id="slideWiz"></div>
+    <!-- Showcase slideshow -->
+    <section id="home"></section>
+
+    <h1 class="section-title wow zoomIn">Keep Clean and Care</h1>
+    <section id="symptoms">
+      <img src="../img/Icon-images/protection/protection01.png" alt="" class="wow slideInLeft" data-wow-duration="2s">
+      <img src="../img/Icon-images/protection/protection02.png" alt="" class="wow slideInLeft" data-wow-duration="2s">
+      <img src="../img/Icon-images/protection/protection03.png" alt="" class="wow bounceInUp" data-wow-duration="2s">
+      <img src="../img/Icon-images/protection/protection04.png" alt="" class="wow slideInRight" data-wow-duration="2s">
+      <img src="../img/Icon-images/protection/protection05.png" alt="" class="wow slideInRight" data-wow-duration="2s">
     </section>
 
-    <section id="what"></section>
+    <section id="advice">
+      <div class="left-side wow slideInLeft" >
+        <img src="../img/Icon-images/doctor check.png" alt="">
+        <h3>Doctor Advice</h3>
+      </div>
 
-    <section id="prevention"></section>
+      <div class="right-side wow slideInRight">
+        <p>Practice <span class="highlight">frequently</span> handwashing with soap</p>
+        <p><span class="highlight">Cover your nose </span>and mouth with tissue/handkerchief while sneezing and coughing</p>
+        <p><span class="highlight">Isolate</span> yourself from others</p>
+      </div>
+    </section>
     <section id="fund"></section>
     <section id="articals"></section>
     <section id="about"></section>
@@ -102,7 +121,7 @@
         <p>&copy;DHelp. All Rights Reserved</p>
       </div>
     </footer>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="../lib/jquery/jquery.min.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
@@ -117,11 +136,13 @@
         window.addEventListener('scroll', (e) => {
           if($('html').scrollTop() > 50){
             $('#header').css({
-              'backgroundColor' : '#cc0e74',
+              'backgroundColor' : '#00bcd4',
               'transition': '0.4s linear'
             });
           }else{
-            $('#header').css('backgroundColor','transparent');
+            $(window).width() < 600 ?
+              $('#header').css('backgroundColor','#00bcd4') :
+              $('#header').css('backgroundColor','transparent');
           }
         });
 
@@ -137,68 +158,68 @@
               // 'box3D',
               // 'pixel',
               // 'fade',
-              'glide',
-              // 'card'
+              // 'glide',
+              'card'
           ],
           file: [
               {
                   src: {
-                      main: "/public/img/icon-images/covid-green.png",
+                      main: "/public/img/icon-images/hand-wash/hand-wash01.png",
                       cover: "/public/img/slides/slide-1.jpg"
                   },
-                  title: 'slideWiz Library - 1',
+                  title: 'Don\'t worry',
                   desc: "1: slideWiz is a JQuery based library created by a Nigerian Software " +
                   "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
                   "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
                   descLength: 220,
                   button: {
-                      text: 'GitHub - 1',
-                      url: 'https://github.com/iamwizzdom/slideWiz',
+                      text: 'Be confident',
+                      url: false,
                       class: 'btn btn-medium btn-primary'
                   }
               },
               {
                   src: {
-                      main: "/public/img/icon-images/wear mask.png",
+                      main: "/public/img/icon-images/hand-wash/hand-wash02.png",
                       cover: "/public/img/slides/slide-2.jpg"
                   },
-                  title: 'slideWiz Library - 2',
+                  title: 'Doctor Advice',
                   desc: "2: slideWiz is a JQuery based library created by a Nigerian Software " +
                   "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
                   "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
                   button: {
-                      text: 'GitHub - 2',
-                      url: 'https://github.com/iamwizzdom/slideWiz',
+                      text: 'Know More',
+                      url: false,
                       class: 'btn btn-medium btn-primary'
                   }
               },
               {
                   src: {
-                      main: "/public/img/icon-images/covid-green.png",
-                      cover: "/public/img/slides/slide-3.jpg"
+                      main: "/public/img/icon-images/hand-wash/hand-wash03.png",
+                      cover: "/public/img/slides/slide-6.jpg"
                   },
-                  title: 'slideWiz Library - 3',
+                  title: 'Wear Mask',
                   desc: "3: slideWiz is a JQuery based library created by a Nigerian Software " +
                   "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
                   "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
                   descLength: 190,
                   button: {
-                      text: 'GitHub - 3',
-                      url: 'https://github.com/iamwizzdom/slideWiz',
+                      text: 'View Procedure',
+                      url: false,
                       class: 'btn btn-medium btn-primary'
                   }
               },
               {
                   src: {
-                      main: "/public/img/icon-images/covid-green.png",
-                      cover: "/public/img/slides/slide-4.jpg"
+                      main: "/public/img/icon-images/hand-wash/hand-wash04.png",
+                      cover: "/public/img/slides/slide-11.jpg"
                   },
-                  title: 'slideWiz Library - 4',
+                  title: 'Repeate Handwash',
                   desc: "4: slideWiz is a JQuery based library created by a Nigerian Software " +
                   "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
                   "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
                   button: {
-                      text: 'GitHub - 4',
+                      text: 'Know More',
                       url: false,
                       class: 'btn btn-medium btn-primary'
                   }
@@ -206,8 +227,17 @@
           ]
 
       });
-
       });
     </script>
+
+      <script src="../lib/wow/js/wow.min.js"></script>
+      <script>
+        wow = new WOW({
+          live: true,
+          mobile: false
+        });
+        wow.init();
+      </script>
+
   </body>
 </html>

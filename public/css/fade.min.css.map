@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAIA,AAAA,sBAAsB,CACtB,uBAAuB,AAAC,CACpB,OAAO,CAAE,CAAC,CAAG,AAEjB,AAAA,yBAAyB,CACzB,0BAA0B,AAAC,CACvB,OAAO,CAAE,CAAC,CAAG,AAEjB,AAAA,2BAA2B,AAAC,CACxB,OAAO,CAAE,CAAC,CAAG",
-    "sources": [
-        "../lib/vegas-master/src/sass/transitions/fade.sass"
-    ],
-    "names": [],
-    "file": "fade.min.css"
-}

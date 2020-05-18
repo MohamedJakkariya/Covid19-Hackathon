@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAIA,AAAA,2BAA2B,CAC3B,4BAA4B,AAAC,CACzB,SAAS,CAAE,gBAAgB,CAAG,AAElC,AAAA,8BAA8B,CAC9B,+BAA+B,AAAC,CAC5B,SAAS,CAAE,cAAc,CAAG,AAEhC,AAAA,gCAAgC,AAAC,CAC7B,SAAS,CAAE,iBAAiB,CAAG",
-    "sources": [
-        "../lib/vegas-master/src/sass/transitions/slide-left.sass"
-    ],
-    "names": [],
-    "file": "slide-left.min.css"
-}
