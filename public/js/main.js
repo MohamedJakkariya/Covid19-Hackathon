@@ -217,6 +217,20 @@ const getData = (choice) => {
 };
 
 $(document).ready(() => {
+    // navbar show and hide effect 
+    window.addEventListener('scroll', (e) => {
+      if($('html').scrollTop() > 50){
+        $('#header').css({
+          'backgroundColor' : '#00bcd4',
+          'transition': '0.4s linear'
+        });
+      }else{
+        $(window).width() < 600 ?
+          $('#header').css('backgroundColor','#00bcd4') :
+          $('#header').css('backgroundColor','transparent');
+      }
+    });
+
   $('#toggle-apply').click(() => {
     $('#apply').fadeToggle('slow');
   });
@@ -344,4 +358,12 @@ const errorPOP = () => {
   $('#pop-up').waitMe('hide');
   $('#pop-confirmation').modal('hide');
   $('#pop-error').modal('show'); 
-}
+};
+
+
+// Scroll animation initialize 
+wow = new WOW({
+  live: true,
+  mobile: false
+});
+wow.init();

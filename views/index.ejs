@@ -1,141 +1,32 @@
-<%- include('header') %>
+<%- include("header") %>
   <body>
-
+    
     <%- include('navbar') %>
 
-    <!-- Showcase  -->
-    <section id="home">
-      <div id="caption">
-        <h1>Welcome to Disaster Help</h1>
-        <p>
-          <q>The starting point of all achievements is desire.</q> <br /><span
-            >-Napoleon Hill</span
-          >
-        </p>
-      </div>
+    <!-- Showcase slideshow -->
+    <section id="home"></section>
+
+    <h1 class="section-title wow zoomIn">Keep Clean and Care</h1>
+    <section id="symptoms">
+      <img src="../img/Icon-images/protection/protection01.png" alt="" class="wow slideInLeft" data-wow-duration="2s">
+      <img src="../img/Icon-images/protection/protection02.png" alt="" class="wow slideInLeft" data-wow-duration="2s">
+      <img src="../img/Icon-images/protection/protection03.png" alt="" class="wow bounceInUp" data-wow-duration="2s">
+      <img src="../img/Icon-images/protection/protection04.png" alt="" class="wow slideInRight" data-wow-duration="2s">
+      <img src="../img/Icon-images/protection/protection05.png" alt="" class="wow slideInRight" data-wow-duration="2s">
     </section>
 
-    <div class="title">
-      <h1><span class="highlight">Covid19</span> Status</h1>
-    </div>
-
-    <section id="statistics">
-      <div class="analysis">
-        <div class="box">
-          <select class="form-control" onchange="getCountryReport()" id="country">
-            <option value="Global">World</option>
-            <option value="India">India</option>
-            <option value="China">China</option>
-            <option value="Pakistan">Pakistan</option>
-            <option value="Italy">Italy</option>
-            <option value="Australia">Australia</option>
-            <option value="America">Russia</option>
-          </select>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3 id="confirmed">0</h3>
-            <p>Total Case</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3 id="active">0</h3>
-            <p>Active Cases</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3 id="deaths">0</h3>
-            <p>Deaths</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="../img/icon.png" alt="" />
-          <div class="value">
-            <h3 id="recovered">0</h3>
-            <p>Recovered</p>
-          </div>
-        </div>        
+    <section id="advice">
+      <div class="left-side wow slideInLeft" >
+        <img src="../img/Icon-images/doctor check.png" alt="">
+        <h3>Doctor Advice</h3>
       </div>
 
-      <div class="chart">
-          <div class="option">
-            <div class="radio-group">
-              <input type="radio" checked id="a-select" class="checkmark" onclick="showGraph('active')" name="option">
-              <label for="a-select">
-                <div class="check"></div>
-                Active
-              </label>
-            </div>
-
-          <div class="radio-group">
-            <input type="radio" id="c-select" class="checkmark" onclick="showGraph('confirmed')" name="option">            
-            <label for="c-select">
-              <div class="check"></div>
-              Confirmed
-            </label>
-            </div>
-
-            <div class="radio-group">
-              <input type="radio" id="d-select" class="checkmark" onclick="showGraph('deaths')" name="option">        
-              <label for="d-select">
-                <div class="check"></div>
-                Deaths
-              </label>
-            </div>
-            <div class="radio-group">
-              <input type="radio" id="r-select" class="checkmark" onclick="showGraph('recovered')" name="option">        
-              <label for="r-select">
-                <div class="check"></div>
-                Recovered
-              </label>
-            </div>
-        </div>
-        <canvas id="chart"></canvas>
+      <div class="right-side wow slideInRight">
+        <p>Practice <span class="highlight">frequently</span> handwashing with soap</p>
+        <p><span class="highlight">Cover your nose </span>and mouth with tissue/handkerchief while sneezing and coughing</p>
+        <p><span class="highlight">Isolate</span> yourself from others</p>
       </div>
     </section>
-
-    <div class="title">
-      <h1>
-        STAY <span class="highlight">HOME</span> SAVE<span class="highlight"
-          >LIVES</span
-        >
-      </h1>
-      <p>Help stop coronavirus</p>
-    </div>
-
-    <section id="what">
-      <div class="content">
-        <h1>What is corona virus ?</h1>
-
-        <p>
-          <q>
-            Corona viruses are a large family of viruses which may cause illness
-            in animals or humans. In humans, several coronaviruses are known to
-            cause respiratory infections ranging from the common cold to more
-            severe diseases such as Middle East Respiratory Syndrome (MERS) and
-            Severe Acute Respiratory Syndrome (SARS). The most recently
-            discovered coronavirus causes coronavirus disease COVID-19.
-          </q>
-        </p>
-
-        <h1>What is <span class="highlight">Covid19</span> ?</h1>
-        <p>
-          <q>
-            COVID-19 is the infectious disease caused by the most recently
-            discovered corona virus. This new virus and disease were unknown
-            before the outbreak began in Wuhan, China, in December 2019.
-          </q>
-        </p>
-      </div>
-      <img src="../img/showcase-1.jpg" alt="" />
-    </section>
-
-    <section id="prevention"></section>
     <section id="fund"></section>
     <section id="articals"></section>
     <section id="about"></section>
@@ -184,39 +75,98 @@
         <p>&copy;DHelp. All Rights Reserved</p>
       </div>
     </footer>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <%- include('footer') %>
-    <script src="../lib/vegas-master/dist/vegas.js"></script>
-    <!-- <script src="../js/main.js"></script> -->
-    <!-- <script src="../js/client.js"></script> -->
-
     <script>
       $(function() {
-        $('#home').vegas({
-          slides: [
-            { src:'../img/slides/slide-1.jpg' },
-            { src:'../img/slides/slide-2.jpg' },
-            { src:'../img/slides/slide-3.jpg' },
-            { src:'../img/slides/slide-4.jpg' },
-            { src:'../img/slides/slide-5.jpg' },
-            { src:'../img/slides/slide-6.jpg' },
+        // Slide show customization 
+        $('#home').slideWiz({
+          auto: true,
+          speed: 5000,
+          row: 12,
+          col: 35,
+          animation: [
+              // 'flip',
+              // 'slice',
+              // 'box3D',
+              // 'pixel',
+              // 'fade',
+              // 'glide',
+              'card'
           ],
-          align: 'center'
-        });
+          file: [
+              {
+                  src: {
+                      main: "../img/icon-images/hand-wash/hand-wash01.png",
+                      cover: "../img/slides/slide-1.jpg"
+                  },
+                  title: 'Don\'t worry',
+                  desc: "1: slideWiz is a JQuery based library created by a Nigerian Software " +
+                  "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
+                  "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
+                  descLength: 220,
+                  button: {
+                      text: 'Be confident',
+                      url: false,
+                      class: 'btn btn-medium btn-primary'
+                  }
+              },
+              {
+                  src: {
+                      main: "../img/icon-images/hand-wash/hand-wash02.png",
+                      cover: "../img/slides/slide-2.jpg"
+                  },
+                  title: 'Doctor Advice',
+                  desc: "2: slideWiz is a JQuery based library created by a Nigerian Software " +
+                  "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
+                  "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
+                  button: {
+                      text: 'Know More',
+                      url: false,
+                      class: 'btn btn-medium btn-primary'
+                  }
+              },
+              {
+                  src: {
+                      main: "../img/icon-images/hand-wash/hand-wash03.png",
+                      cover: "../img/slides/slide-6.jpg"
+                  },
+                  title: 'Wear Mask',
+                  desc: "3: slideWiz is a JQuery based library created by a Nigerian Software " +
+                  "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
+                  "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
+                  descLength: 190,
+                  button: {
+                      text: 'View Procedure',
+                      url: false,
+                      class: 'btn btn-medium btn-primary'
+                  }
+              },
+              {
+                  src: {
+                      main: "../img/icon-images/hand-wash/hand-wash04.png",
+                      cover: "../img/slides/slide-11.jpg"
+                  },
+                  title: 'Repeate Handwash',
+                  desc: "4: slideWiz is a JQuery based library created by a Nigerian Software " +
+                  "Engineer by the name 'Wisdom Emenike' who at the time of writing this library " +
+                  "works at Imaxinacion Technology, one of Nigeria's leading IT companies.",
+                  button: {
+                      text: 'Know More',
+                      url: false,
+                      class: 'btn btn-medium btn-primary'
+                  }
+              }
+          ]
 
-        // navbar show and hide effect 
-        window.addEventListener('scroll', (e) => {
-          if($('html').scrollTop() > 50){
-            $('#header').css({
-              'backgroundColor' : '#cc0e74',
-              'transition': '0.4s linear'
-            });
-          }else{
-            $('#header').css('backgroundColor','transparent');
-          }
-        });
+      });
       });
     </script>
+
+      <script>
+
+      </script>
+
   </body>
 </html>
